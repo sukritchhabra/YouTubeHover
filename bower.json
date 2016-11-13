@@ -1,0 +1,25 @@
+{
+  "name": "YouTubeHover",
+  "homepage": "https://github.com/sukritchhabra/YouTubeHover",
+  "authors": [
+    "Sukrit Chhabra <sukrit.chhabra@gmail.com>"
+  ],
+  "description": "A Chrome Extesion that plays YouTube videos when you hover on their images.",
+  "main": "",
+  "keywords": [
+    "extension",
+    "youtube"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
