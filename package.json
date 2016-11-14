@@ -1,0 +1,22 @@
+{
+  "name": "youtubehover",
+  "version": "1.0.0",
+  "description": "A Chrome Extesion that plays YouTube videos when you hover on their images.",
+  "main": "content.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sukritchhabra/YouTubeHover.git"
+  },
+  "author": "Sukrit Chhabra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sukritchhabra/YouTubeHover/issues"
+  },
+  "homepage": "https://github.com/sukritchhabra/YouTubeHover#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0"
+  }
+}
