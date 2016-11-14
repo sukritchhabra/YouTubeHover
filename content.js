@@ -21,7 +21,15 @@ $(document).ready(function($) {
      */
     function getVideoID (url) {
         var splitString = url.split("watch\?v=");
-        var id = splitString[1];
+        var beginTime = 0;
+        var id;
+        if ( splitString[1].indexOf("&t") >= 0 ) {
+            var secondSplit = splitString[1].split("&t=");
+            id = secondSplit[0];
+            beginTime = parseInt(secondSplit[1]);
+        } else {
+            id = splitString[1];
+        }
         return id;
     }
 
@@ -35,9 +43,10 @@ $(document).ready(function($) {
         var width = img[0].width + "px";
         var height = img[0].height + "px";
 
-        iframeHTML ='<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID + '?controls=0&autoplay=1&showinfo=0" frameborder="0"' +
-                'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
-                'data-id="' + vID + '"></iframe>';
+        iframeHTML = '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
+                     '?controls=0&autoplay=1&showinfo=0&start=0" frameborder="0"' +
+                     'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
+                     'data-id="' + vID + '"></iframe>';
 
         // Use shorthands
         $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple').append(iframeHTML);
