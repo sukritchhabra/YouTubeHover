@@ -1,15 +1,29 @@
 console.log('Hello Developer');
 
+var settings = {};
+chrome.storage.sync.get(function (chromeSettings) {
+    console.log(chromeSettings);
+    $.each(chromeSettings, function (key, value) {
+        settings[key] = value;
+    })
+});
+
+var timeoutID; // Global timeoutID to check if user exited before the delay was completed
+
 $(document).ready(function($) {
     $(".yt-shelf-grid-item").hover(function() {
+        var hoverState = true;
         var $video = $(this);
         var link = $video.find('a.yt-uix-sessionlink')[0].href;
         var id = getVideoID(link);
         var thumbnail = $video.find('.yt-thumb.video-thumb .yt-thumb-simple img');
 
-        addIFrame($video, thumbnail, id);
+        timeoutID = setTimeout(function() {
+                addIFrame($video, thumbnail, id);
+        }, settings.hoverDelay*1000);
 
     }, function() {
+        clearTimeout(timeoutID);
         removeIFrame($(this));
         console.log('exited');
     });
