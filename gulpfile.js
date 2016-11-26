@@ -15,7 +15,7 @@ gulp.task('controllers', function() {
     return gulp.src(paths.controllers)
       .pipe(concat('controllers.js'))
       .pipe(gulp.dest('controllers/'))
-      .pipe(uglify().on('error', function(e) { console.log('\x07',e.message); return this.end(); }))
+      .pipe(uglify())
       .pipe(rename("controllers.min.js"))
       .pipe(gulp.dest('controllers/'));
 });
