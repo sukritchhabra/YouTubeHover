@@ -13,7 +13,7 @@
     //
 
     "options_ui": {
-      "page": "options.html",
+      "page": "options/options.html",
       "chrome_style": true,
       "open_in_tab": true
     },
@@ -23,7 +23,9 @@
     ],
 
     "content_scripts": [ {
-      "js": [ "bower_components/jquery/dist/jquery.min.js", "content.js" ],
+      "js": [ "bower_components/jquery/dist/jquery.min.js", "content.js", "components/components.min.js" ],
       "matches": ["https://*.youtube.com/*"]
-    }]
+    }],
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
