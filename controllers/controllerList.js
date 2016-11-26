@@ -1,0 +1,4 @@
+var controllerList = [
+    "playVideo",
+    "skipIntervals"
+];

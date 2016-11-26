@@ -1,10 +1,10 @@
 console.log('Hello Developer');
 
-var settings = {};
+var YouTubeHoverSettings = {}; // Global YouTubeHoverSettings object. Is available to all controllers
 chrome.storage.sync.get(function (chromeSettings) {
     console.log(chromeSettings);
     $.each(chromeSettings, function (key, value) {
-        settings[key] = value;
+        YouTubeHoverSettings[key] = value;
     })
 });
 
@@ -20,13 +20,15 @@ $(document).ready(function($) {
 
         timeoutID = setTimeout(function() {
                 addIFrame($video, thumbnail, id);
-        }, settings.hoverDelay*1000);
+        }, YouTubeHoverSettings.hoverDelay*1000);
 
     }, function() {
         clearTimeout(timeoutID);
         removeIFrame($(this));
         console.log('exited');
     });
+
+    setupControllers(controllerList);
 
     /**
      * Parses a YouTube video URl and returns its ID
@@ -74,5 +76,13 @@ $(document).ready(function($) {
     function removeIFrame ($videoContainer) {
         $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple iframe').remove();
         $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple img').css('display', 'inline');
+    }
+
+    function setupControllers (cList) {
+        console.log(cList);
+        $.each(cList, function(index, val) {
+             var controllerFunction = "controller_" + val;
+             eval(controllerFunction)();
+        });
     }
 });
