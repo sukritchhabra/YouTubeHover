@@ -1,6 +1,12 @@
 # YouTubeHover
 
 ## Developement Setup
+* Clone the fork.
+* Switch to `develop`.
+* Open Chrome and then extensions (or you can just type this in the url: `chrome://extensions/`).
+* Click on __Load unpacked extension__.
+* Select the folder of your repo.
+* You should see the extension in effect at this point.
 * Run `npm install`
 * Run `bower install`
 
@@ -16,7 +22,10 @@
     * Ideally there should be a wrapper within your `<section>` tag within which there should be a `label` and an `input`.
 * Create the rest of your mark up as per your requirements.
 
-* __There should absolutely be an `<input class="saveValue" data-property="">` tag.__
+* __There should absolutely be an `<input>` tag with `class="saveValue"` and a `data-property`.__
+    ```html
+        <input class="saveValue" data-property="">
+    ```
     * The value in this `input` tag is going to be saved in the settings when the user clicks the Save Button.
     * The `data-property` attribute is the name you would like to assign the property in the settings object. This will help retrieve the setting in various other places.
 
