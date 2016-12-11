@@ -1,11 +1,12 @@
 console.log('Hello Developer');
 
-var YouTubeHoverSettings = {}; // Global YouTubeHoverSettings object. Is available to all controllers
+var YouTubeHoverSettings = {}; // Global YouTubeHoverSettings object. Is available to all controllers.
 chrome.storage.sync.get(function (chromeSettings) {
     console.log(chromeSettings);
     $.each(chromeSettings, function (key, value) {
         YouTubeHoverSettings[key] = value;
     })
+    Object.freeze(YouTubeHoverSettings); // Making object immutable.
 });
 
 var timeoutID; // Global timeoutID to check if user exited before the delay was completed
