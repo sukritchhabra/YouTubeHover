@@ -61,13 +61,14 @@ $(document).ready(function($) {
         var height = img[0].height + "px";
 
         iframeHTML = '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
-                     '?controls=0&autoplay=1&showinfo=0&start=0" frameborder="0"' +
+                     '?controls=0&autoplay=1&showinfo=0&start=0&enablejsapi=1" frameborder="0"' +
                      'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
 
         // Use shorthands
         $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple').append(iframeHTML);
         img.css('display', 'none');
+        $('body').trigger('youtubeHover_iframeAdded');
     }
 
     /**
@@ -77,6 +78,7 @@ $(document).ready(function($) {
     function removeIFrame ($videoContainer) {
         $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple iframe').remove();
         $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple img').css('display', 'inline');
+        $('body').trigger('youtubeHover_iframeRemoved');
     }
 
     function setupControllers (cList) {
