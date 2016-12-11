@@ -23,7 +23,7 @@
     ],
 
     "content_scripts": [ {
-      "js": [ "bower_components/jquery/dist/jquery.min.js", "controllers/controllerList.js", "content.js", "controllers/controllers.min.js" ],
+      "js": [ "bower_components/jquery/dist/jquery.min.js", "iframe_api.js", "widgetAPI.js", "controllers/controllerList.js", "content.js", "controllers/controllers.min.js" ],
       "matches": ["https://*.youtube.com/*"]
     }],
 
