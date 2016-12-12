@@ -21,6 +21,6 @@ function delayOnHover_updateDelayValue (delayVal, parentDiv) {
 
 
 function delayOnHover_restoreSettings (settings) {
-    $('#delayOnHover .slider').slider('value', settings.hoverDelay);
-    $('#delayOnHover input').val(settings.hoverDelay);
+    $('#delayOnHover .slider').slider('value', settings.delayOnHover.hoverDelay);
+    $('#delayOnHover input').val(settings.delayOnHover.hoverDelay);
 }

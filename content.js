@@ -21,7 +21,7 @@ $(document).ready(function($) {
 
         timeoutID = setTimeout(function() {
                 addIFrame($video, thumbnail, id);
-        }, YouTubeHoverSettings.hoverDelay*1000);
+        }, YouTubeHoverSettings.delayOnHover.hoverDelay * 1000);
 
     }, function() {
         clearTimeout(timeoutID);
