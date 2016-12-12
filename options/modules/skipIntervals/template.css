@@ -1,0 +1,12 @@
+#skipIntervals .hideInput {
+    display: none !important;
+}
+
+#skipIntervals .sub-option label {
+    margin-left: 1em;
+}
+
+#skipIntervals .sub-option input {
+    margin-left: 1em;
+    vertical-align: sub;
+}

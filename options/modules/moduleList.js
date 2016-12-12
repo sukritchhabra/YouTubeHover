@@ -1,3 +1,4 @@
 var moduleList = [
-    "delayOnHover"
+    "delayOnHover",
+    "skipIntervals"
 ];

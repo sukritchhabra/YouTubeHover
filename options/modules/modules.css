@@ -36,3 +36,15 @@
 #delayOnHover #delaySlider .ui-slider-handle:focus {
     outline: none;
 }
+#skipIntervals .hideInput {
+    display: none !important;
+}
+
+#skipIntervals .sub-option label {
+    margin-left: 1em;
+}
+
+#skipIntervals .sub-option input {
+    margin-left: 1em;
+    vertical-align: sub;
+}
