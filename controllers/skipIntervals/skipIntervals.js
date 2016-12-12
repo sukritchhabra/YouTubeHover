@@ -8,27 +8,29 @@ var skipIntervals_clearTimeoutArr = [];
  * [Default controller function that binds events for the controller.]
  */
 function controller_skipIntervals () {
-    // When iframe is added.
-    $('body').on('youtubeHover_iframeAdded', function () {
-        skipIntervals_playerExists = true;
+    if (YouTubeHoverSettings.skipIntervals.enabled == "enabled") {
+        // When iframe is added.
+        $('body').on('youtubeHover_iframeAdded', function () {
+            skipIntervals_playerExists = true;
 
-        skipIntervals_player = new YT.Player('youtubeHover_frame', {
-            events: {
-              'onReady': skipIntervals_onPlayerReady,
-              'onStateChange': skipIntervals_onPlayerStateChange
-            }
+            skipIntervals_player = new YT.Player('youtubeHover_frame', {
+                events: {
+                  'onReady': skipIntervals_onPlayerReady,
+                  'onStateChange': skipIntervals_onPlayerStateChange
+                }
+            });
         });
-    });
 
-    // When iframe is removed.
-    $('body').on('youtubeHover_iframeRemoved', function () {
-        skipIntervals_playerExists = false;
-        skipIntervals_player.destroy();
+        // When iframe is removed.
+        $('body').on('youtubeHover_iframeRemoved', function () {
+            skipIntervals_playerExists = false;
+            skipIntervals_player.destroy();
 
-        skipIntervals_clearTimeoutArr.forEach(function(timer) {
-            clearTimeout(timer);
+            skipIntervals_clearTimeoutArr.forEach(function(timer) {
+                clearTimeout(timer);
+            });
         });
-    });
+    }
 }
 
 /**
@@ -36,11 +38,18 @@ function controller_skipIntervals () {
  * @param  {[Event]} event [An object containing event details.]
  */
 function skipIntervals_onPlayerReady(event) {
-    skipIntervals_player.setVolume('0');
+    // If user selected "Still", set volume to 0 and pause video to emulate still images.
+    if (YouTubeHoverSettings.skipIntervals.format == "still") {
+        skipIntervals_player.setVolume('0');
 
-    setTimeout(function () {
-        skipIntervals_player.pauseVideo();
-    }, 1000);
+        setTimeout(function () {
+            skipIntervals_player.pauseVideo();
+        }, 1000);
+    }
+
+    // Set playback quality from user settings.
+    var pbQuality = YouTubeHoverSettings.skipIntervals.quality;
+    skipIntervals_player.setPlaybackQuality(pbQuality);
 
     for (var i = 0; i <= skipIntervals_player.getDuration(); i = i + 5) {
         (function(index) {
