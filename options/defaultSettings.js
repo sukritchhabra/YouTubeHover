@@ -5,6 +5,7 @@ var defaultSettings = {
 
     skipIntervals: {
         enabled: "disabled",
-        format: "playing"
+        format: "playing",
+        quality: "large"
     }
 };
