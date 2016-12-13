@@ -16,9 +16,14 @@ $(document).ready(function($) {
         mouseenter: function () {
             var hoverState = true;
             var $video = $(this);
-            var link = $video.find('a.yt-uix-sessionlink')[0].href;
+
+            var linkSelector = '.yt-lockup-thumbnail a.yt-uix-sessionlink, .thumb-wrapper a.yt-uix-sessionlink';
+            var link = $video.find(linkSelector)[0].href;
+
             var id = getVideoID(link);
-            var thumbnail = $video.find('.yt-thumb.video-thumb .yt-thumb-simple img');
+
+            var thumbnailSelector = '.yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
+            var thumbnail = $video.find(thumbnailSelector);
 
             timeoutID = setTimeout(function() {
                     addIFrame($video, thumbnail, id);
@@ -26,10 +31,12 @@ $(document).ready(function($) {
         },
         mouseleave: function () {
             clearTimeout(timeoutID);
-            removeIFrame($(this));
+
+            var thumbnailSelector = '.yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
+            removeIFrame($(this), thumbnailSelector);
             console.log('exited');
         }
-    }, ".yt-shelf-grid-item, .expanded-shelf-content-item");
+    }, ".yt-shelf-grid-item, .expanded-shelf-content-item, .video-list-item");
 
     setupControllers(controllerList);
 
@@ -67,8 +74,7 @@ $(document).ready(function($) {
                      'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
 
-        // Use shorthands
-        $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple').append(iframeHTML);
+        $(img).parent().append(iframeHTML);
         img.css('display', 'none');
         $('body').trigger('youtubeHover_iframeAdded');
     }
@@ -76,10 +82,11 @@ $(document).ready(function($) {
     /**
      * Remove the iframe when mouse exists the container.
      * @param  {[Object]} $videoContainer [The complete container of the img and the links]
+     * @param  {[String]} imgSelector     [The jquery selector to find the image with the $videoContainer]
      */
-    function removeIFrame ($videoContainer) {
-        $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple iframe').remove();
-        $videoContainer.find('.yt-thumb.video-thumb .yt-thumb-simple img').css('display', 'inline');
+    function removeIFrame ($videoContainer, imgSelector) {
+        $videoContainer.find(imgSelector).parent().find('iframe').remove();
+        $videoContainer.find(imgSelector).css('display', 'inline');
         $('body').trigger('youtubeHover_iframeRemoved');
     }
 
