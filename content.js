@@ -12,22 +12,24 @@ chrome.storage.sync.get(function (chromeSettings) {
 var timeoutID; // Global timeoutID to check if user exited before the delay was completed
 
 $(document).ready(function($) {
-    $(".yt-shelf-grid-item").hover(function() {
-        var hoverState = true;
-        var $video = $(this);
-        var link = $video.find('a.yt-uix-sessionlink')[0].href;
-        var id = getVideoID(link);
-        var thumbnail = $video.find('.yt-thumb.video-thumb .yt-thumb-simple img');
+    $("body").on({
+        mouseenter: function () {
+            var hoverState = true;
+            var $video = $(this);
+            var link = $video.find('a.yt-uix-sessionlink')[0].href;
+            var id = getVideoID(link);
+            var thumbnail = $video.find('.yt-thumb.video-thumb .yt-thumb-simple img');
 
-        timeoutID = setTimeout(function() {
-                addIFrame($video, thumbnail, id);
-        }, YouTubeHoverSettings.delayOnHover.hoverDelay * 1000);
-
-    }, function() {
-        clearTimeout(timeoutID);
-        removeIFrame($(this));
-        console.log('exited');
-    });
+            timeoutID = setTimeout(function() {
+                    addIFrame($video, thumbnail, id);
+            }, YouTubeHoverSettings.delayOnHover.hoverDelay * 1000);
+        },
+        mouseleave: function () {
+            clearTimeout(timeoutID);
+            removeIFrame($(this));
+            console.log('exited');
+        }
+    }, ".yt-shelf-grid-item, .expanded-shelf-content-item");
 
     setupControllers(controllerList);
 
