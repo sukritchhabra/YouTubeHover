@@ -56,9 +56,12 @@ function skipIntervals_onPlayerReady(event) {
     var pbQuality = YouTubeHoverSettings.skipIntervals.quality;
     skipIntervals_player.setPlaybackQuality(pbQuality);
 
-    for (var i = 0; i <= skipIntervals_player.getDuration(); i = i + 5) {
+    var increment = parseInt(YouTubeHoverSettings.skipIntervals.increment);
+    var incrementFactor = parseInt(YouTubeHoverSettings.skipIntervals.incrementFactor);
+
+    for (var i = 0; i <= (skipIntervals_player.getDuration() + increment); i = i + increment) {
         (function(index) {
-            skipIntervals_timeoutID = setTimeout(function(){skipIntervals_player.seekTo(index);}, 120 * index);
+            skipIntervals_timeoutID = setTimeout(function(){skipIntervals_player.seekTo(index);}, incrementFactor * index);
             skipIntervals_clearTimeoutArr.push(skipIntervals_timeoutID);
         })(i);
     }
