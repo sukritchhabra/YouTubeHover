@@ -24,7 +24,11 @@ function controller_skipIntervals () {
         // When iframe is removed.
         $('body').on('youtubeHover_iframeRemoved', function () {
             skipIntervals_playerExists = false;
-            skipIntervals_player.destroy();
+
+            // Abscence of this condition was causing error logs if user moved the mouse out before iframe was added.
+            if (skipIntervals_player != undefined) {
+                skipIntervals_player.destroy();
+            }
 
             skipIntervals_clearTimeoutArr.forEach(function(timer) {
                 clearTimeout(timer);
