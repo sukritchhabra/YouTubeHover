@@ -30,18 +30,22 @@ function skipIntervals () {
         var inputField = $(this);
         var subOption = $(this).closest('.sub-option');
         subOption.find('.saveValue').val(inputField.val());
-        $('#skipIntervals #increment-delay input[name="increment-delay"]:checked').trigger('change');
+
+        // Emulating change event on slider by changing values. Using.trigger("change") was not working.
+        var tempSliderValue = $("#skipIntervals #increment-delay .slider").slider("option", "value");
+        $("#skipIntervals #increment-delay .slider").slider("option", "value", 0);
+        $("#skipIntervals #increment-delay .slider").slider("option", "value", tempSliderValue);
     });
 
-    $('body').on('change', '#skipIntervals #increment-delay input[name="increment-delay"]', function(event) {
-        var inputField = $(this);
-        var subOption = $(this).closest('.sub-option');
-
-        var incrementVal = parseInt($('#skipIntervals #increments .saveValue').val());
-        var totalDelay = parseInt(inputField.val()) * 1000;
-        var incrementFactor = Math.floor(totalDelay / incrementVal);
-
-        subOption.find('.saveValue').val(incrementFactor);
+    // Initiate Increment Delay Slider
+    $('#skipIntervals #increment-delay .slider').slider({
+        min: 1,
+        max: 10,
+        step: 1,
+        animate: "fast",
+        change: function(event, slider) {
+            skipIntervals_updateIncrementDelayValue(slider.value, $(this).parent());
+        }
     });
 }
 
@@ -79,8 +83,22 @@ function skipIntervals_restoreSettings (settings) {
     $('#skipIntervals #increments .saveValue').val(settings.skipIntervals.increment);
 
     // Load Increments Delay value
-    var inputVal = (settings.skipIntervals.increment * settings.skipIntervals.incrementFactor) / 1000;
-    var incrementDelayRadioSelector = '#skipIntervals #increment-delay input[value="' + inputVal + '"]';
-    $(incrementDelayRadioSelector).prop("checked", true);
+    var sliderVal = (settings.skipIntervals.increment * settings.skipIntervals.incrementFactor) / 1000;
+    $("#skipIntervals #increment-delay .slider").slider("option", "value", sliderVal);
     $('#skipIntervals #increment-delay .saveValue').val(settings.skipIntervals.incrementFactor);
+}
+
+/**
+ * Function that is called when a change occurs in the increment delay slider
+ * to update appropriate input fields.
+ * @param  {[Integer]} delayVal  [Value selected by the user in the slider]
+ * @param  {[DOM Element]} parentDiv [The parent div of the slider]
+ */
+function skipIntervals_updateIncrementDelayValue (delayVal, parentDiv) {
+        var incrementVal = parseInt($('#skipIntervals #increments .saveValue').val());
+        var totalDelay = parseInt(delayVal) * 1000;
+        var incrementFactor = Math.floor(totalDelay / incrementVal);
+
+        parentDiv.find('.increment-delay-value').val(delayVal);
+        parentDiv.find('.saveValue').val(incrementFactor);
 }
