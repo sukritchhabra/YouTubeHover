@@ -2,6 +2,7 @@ $(document).ready(function($) {
     loadOptions();
     restoreOptions();
 
+    // Detecting click on the save button
     $('body').on('click', '#save', function(event) {
         saveOptions();
     });
@@ -11,6 +12,16 @@ $(document).ready(function($) {
         if (event.keyCode === 13) {
             saveOptions();
         }
+    });
+
+
+    $('body').on('click', 'section.option', function(event) {
+        $(this).find('.wrapper').slideToggle(500);
+    });
+
+    // Clicking on section.option .wrapper doesn't propogate to section.option
+    $('body').on('click', 'section.option .wrapper', function(event) {
+        event.stopPropagation();
     });
 
     /**
