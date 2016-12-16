@@ -41,7 +41,7 @@ function skipIntervals () {
     $('#skipIntervals #increment-delay .slider').slider({
         min: 1,
         max: 10,
-        step: 1,
+        step: 0.5,
         animate: "fast",
         change: function(event, slider) {
             skipIntervals_updateIncrementDelayValue(slider.value, $(this).parent());
