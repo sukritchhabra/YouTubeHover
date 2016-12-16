@@ -42,12 +42,17 @@
     * This function would ideally have event binders to elements in your markup. Any action on these elements will ultimately lead you to come up for a value in the `input` tag.
 
 * __There should absolutely be a function with the name `yourModuleName_restoreSettings (settings) { ... }`.__
+    * Ex: Module name: `ColorSelector`.
+    * Restore function:
+    ```javascript
+        function ColorSelector_restoreSettings (settings) { ... }
+    ```
     * This function gets the settings from chrome in its argument; You can get the value necessary for your markup and setup your markup when the page is loading.
 
 * There may be any other function that may assist you in handling your markup.
 * It's a good idea to preface your functions with the name of your module to avoid clashes with other modules.
 
-#### `template.css`
+#### `template.scss`
 * Type your css in this file.
 * Scope your css to your module.
     * Ex: If you want `a` tags in your module to be red.
@@ -59,7 +64,10 @@
     ```
     * Do:
     ```css
-        #yourModule a {
-            color: red;
+        #yourModule {
+            a {
+                color: red;
+            }
         }
     ```
+* This is a SASS file so you can use sass priciples like nesting, variables, extend/inheritence, etc.
