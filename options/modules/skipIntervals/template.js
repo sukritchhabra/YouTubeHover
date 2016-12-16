@@ -39,7 +39,7 @@ function skipIntervals () {
 
     // Initiate Increment Delay Slider
     $('#skipIntervals #increment-delay .slider').slider({
-        min: 1,
+        min: 0.5,
         max: 10,
         step: 0.5,
         animate: "fast",
@@ -95,10 +95,10 @@ function skipIntervals_restoreSettings (settings) {
  * @param  {[DOM Element]} parentDiv [The parent div of the slider]
  */
 function skipIntervals_updateIncrementDelayValue (delayVal, parentDiv) {
-        var incrementVal = parseInt($('#skipIntervals #increments .saveValue').val());
-        var totalDelay = parseInt(delayVal) * 1000;
-        var incrementFactor = Math.floor(totalDelay / incrementVal);
+    var incrementVal = parseInt($('#skipIntervals #increments .saveValue').val());
+    var totalDelay = delayVal * 1000;
+    var incrementFactor = Math.floor(totalDelay / incrementVal);
 
-        parentDiv.find('.increment-delay-value').val(delayVal);
-        parentDiv.find('.saveValue').val(incrementFactor);
+    parentDiv.find('.increment-delay-value').val(delayVal);
+    parentDiv.find('.saveValue').val(incrementFactor);
 }
