@@ -4,11 +4,12 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
+var sass = require('gulp-sass');
 
 var paths = {
     controllers: 'controllers/*/*.js',
     options_scripts: ['options/modules/*/*.js', '!options/modules/min/*.js'],
-    options_styles: ['options/modules/*/*.css', '!options/modules/min/*.css'],
+    options_styles: ['options/modules/*/*.scss', '!options/modules/min/*.css'],
 }
 
 gulp.task('controllers', function() {
@@ -31,7 +32,9 @@ gulp.task('optionsScripts', function() {
 
 gulp.task('optionsStyles', function() {
     return gulp.src(paths.options_styles)
-      .pipe(concat('modules.css'))
+      .pipe(concat('modules.scss'))
+      .pipe(gulp.dest('options/modules/'))
+      .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('options/modules/'))
       .pipe(cleanCSS())
       .pipe(rename("modules.min.css"))
@@ -43,7 +46,7 @@ gulp.task('watch', function() {
     // Watch .js files
     gulp.watch('controllers/*/*.js', ['controllers']);
     gulp.watch('options/modules/*/*.js', ['optionsScripts']);
-    gulp.watch('options/modules/*/*.css', ['optionsStyles']);
+    gulp.watch('options/modules/*/*.scss', ['optionsStyles']);
  });
 
 // Default Task
