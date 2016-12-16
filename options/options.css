@@ -49,6 +49,8 @@ nav {
       cursor: auto;
       border: solid 1px #e7e7e7;
       border-radius: 0.7em; }
+    #insertSettings .option .hideInput {
+      display: none !important; }
   #insertSettings .sub-option {
     margin: 1em 0em 1em; }
     #insertSettings .sub-option > * {
