@@ -18,6 +18,12 @@ $(document).ready(function($) {
 
     $('body').on('click', 'section.option', function(event) {
         $(this).find('.wrapper').slideToggle(500);
+        var chevronGlyph = $(this).find('h4 span.fa');
+        if (chevronGlyph.hasClass('fa-chevron-down')) {
+            chevronGlyph.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+        } else {
+            chevronGlyph.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+        }
     });
 
     // Clicking on section.option .wrapper doesn't propogate to section.option

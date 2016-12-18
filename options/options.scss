@@ -70,6 +70,13 @@ nav {
             border: solid 1px #dedede;
             border-radius: 0.7em;
 
+            h4 span.fa{
+                float: right;
+                position: relative;
+                top: 0.5em;
+                font-size: 0.5em;
+            }
+
             .wrapper {
                 display: none;
                 cursor: auto;
