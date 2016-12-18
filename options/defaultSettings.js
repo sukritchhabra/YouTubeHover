@@ -4,10 +4,10 @@ var defaultSettings = {
     },
 
     skipIntervals: {
-        enabled: "disabled",
+        enabled: "enabled",
         format: "playing",
-        increment: "5",
-        incrementFactor: "400",
-        quality: "large"
+        increment: "20",
+        incrementFactor: "50",
+        quality: "medium"
     }
 };

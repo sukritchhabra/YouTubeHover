@@ -1,7 +1,7 @@
 console.log('Hello Developer');
 
 var YouTubeHoverSettings = {}; // Global YouTubeHoverSettings object. Is available to all controllers.
-chrome.storage.sync.get(function (chromeSettings) {
+chrome.storage.sync.get(defaultSettings, function (chromeSettings) {
     console.log(chromeSettings);
     $.each(chromeSettings, function (key, value) {
         YouTubeHoverSettings[key] = value;
