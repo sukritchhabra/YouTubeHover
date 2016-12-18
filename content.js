@@ -6,7 +6,12 @@ chrome.storage.sync.get(function (chromeSettings) {
     $.each(chromeSettings, function (key, value) {
         YouTubeHoverSettings[key] = value;
     })
-    Object.freeze(YouTubeHoverSettings); // Making object immutable.
+
+    if (location.protocol === "chrome-extension:" && location.pathname === "/options/options.html") {
+        Object.seal(YouTubeHoverSettings);
+    } else {
+        Object.freeze(YouTubeHoverSettings); // Making object immutable.
+    }
 });
 
 var timeoutID; // Global timeoutID to check if user exited before the delay was completed

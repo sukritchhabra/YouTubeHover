@@ -27,5 +27,5 @@
       "matches": ["https://*.youtube.com/*"]
     }],
 
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://s.ytimg.com/; object-src 'self'"
 }
