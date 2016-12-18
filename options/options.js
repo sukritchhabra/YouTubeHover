@@ -180,7 +180,7 @@ $(document).ready(function($) {
                          + '<div class="yt-lockup-thumbnail contains-addto">'
                              + '<a aria-hidden="true" href="/watch?v=' + id + '" class=" yt-uix-sessionlink spf-link">'
                                  + '<div class="yt-thumb video-thumb"><span class="yt-thumb-simple">'
-                                     + '<img data-ytimg="1" alt="" src="http://img.youtube.com/vi/' + id + '/mqdefault.jpg" width="196" height="110" style="display: inline;">'
+                                     + '<img data-ytimg="1" alt="" src="http://img.youtube.com/vi/' + id + '/mqdefault.jpg" width="300" height="168.5" style="display: inline;">'
                                      + '</span>'
                                  + '</div>'
                              + '</a>'
@@ -189,6 +189,6 @@ $(document).ready(function($) {
                  + '</div>'
              + '</li>';
 
-        $('body #example').append(tempHTML);
+        $('body #example').prepend(tempHTML);
     }
 });
