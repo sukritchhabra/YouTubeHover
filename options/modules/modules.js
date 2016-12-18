@@ -22,7 +22,7 @@ function delayOnHover_updateDelayValue (delayVal, parentDiv) {
 
 function delayOnHover_restoreSettings (settings) {
     $('#delayOnHover .slider').slider('value', settings.delayOnHover.hoverDelay);
-    $('#delayOnHover input').val(settings.delayOnHover.hoverDelay);
+    $('#delayOnHover .saveValue').val(settings.delayOnHover.hoverDelay).trigger('change');
 }
 function skipIntervals () {
     $('body').on('change', '#skipIntervals #enable input[type="checkbox"]', function(event) {
@@ -126,5 +126,5 @@ function skipIntervals_updateIncrementDelayValue (delayVal, parentDiv) {
     var incrementFactor = Math.floor(totalDelay / incrementVal);
 
     parentDiv.find('.increment-delay-value').val(delayVal);
-    parentDiv.find('.saveValue').val(incrementFactor);
+    parentDiv.find('.saveValue').val(incrementFactor).trigger('change');
 }

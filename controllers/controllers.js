@@ -13,9 +13,14 @@ var skipIntervals_clearTimeoutArr = [];
  * [Default controller function that binds events for the controller.]
  */
 function controller_skipIntervals () {
-    if (YouTubeHoverSettings.skipIntervals.enabled == "enabled") {
-        // When iframe is added.
-        $('body').on('youtubeHover_iframeAdded', function () {
+    // When iframe is added.
+    $('body').on('youtubeHover_iframeAdded', function () {
+        /**
+         * Earlier the check was outside the event bindings. Moving this in because YouTubeHoverSettings
+         * can change between the two different iframe additions (Only on the options page.)
+         * This functionality is needed for the example on the options page.
+         */
+        if (YouTubeHoverSettings.skipIntervals.enabled == "enabled") {
             skipIntervals_playerExists = true;
 
             skipIntervals_player = new YT.Player('youtubeHover_frame', {
@@ -24,10 +29,12 @@ function controller_skipIntervals () {
                   'onStateChange': skipIntervals_onPlayerStateChange
                 }
             });
-        });
+        }
+    });
 
-        // When iframe is removed.
-        $('body').on('youtubeHover_iframeRemoved', function () {
+    // When iframe is removed.
+    $('body').on('youtubeHover_iframeRemoved', function () {
+        if (YouTubeHoverSettings.skipIntervals.enabled == "enabled") {
             skipIntervals_playerExists = false;
 
             // Abscence of this condition was causing error logs if user moved the mouse out before iframe was added.
@@ -38,8 +45,8 @@ function controller_skipIntervals () {
             skipIntervals_clearTimeoutArr.forEach(function(timer) {
                 clearTimeout(timer);
             });
-        });
-    }
+        }
+    });
 }
 
 /**

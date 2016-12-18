@@ -100,5 +100,5 @@ function skipIntervals_updateIncrementDelayValue (delayVal, parentDiv) {
     var incrementFactor = Math.floor(totalDelay / incrementVal);
 
     parentDiv.find('.increment-delay-value').val(delayVal);
-    parentDiv.find('.saveValue').val(incrementFactor);
+    parentDiv.find('.saveValue').val(incrementFactor).trigger('change');
 }
