@@ -7,36 +7,38 @@
             <input type="text" class="saveValue hideInput" data-property="enabled">
         </div>
 
-        <div id="format" class="sub-option">
-            <label>Still<input type="radio" name="format" value="still"></label>
-            <label>Playing<input type="radio" name="format" value="playing"></label>
-            <input type="text" class="saveValue hideInput" data-property="format">
-        </div>
+        <div class="addEnableSettingState">
+            <div id="format" class="sub-option">
+                <label>Still<input type="radio" name="format" value="still"></label>
+                <label>Playing<input type="radio" name="format" value="playing"></label>
+                <input type="text" class="saveValue hideInput" data-property="format">
+            </div>
 
-        <div id="quality" class="sub-option">
-            <label>Auto<input type="radio" name="quality" value="auto"></label>
-            <label>Small<input type="radio" name="quality" value="small"></label>
-            <label>Medium<input type="radio" name="quality" value="medium"></label>
-            <label>Large<input type="radio" name="quality" value="large"></label>
-            <label>HD<input type="radio" name="quality" value="hd720"></label>
-            <input type="text" class="saveValue hideInput" data-property="quality">
-        </div>
+            <div id="quality" class="sub-option">
+                <label>Auto<input type="radio" name="quality" value="auto"></label>
+                <label>Small<input type="radio" name="quality" value="small"></label>
+                <label>Medium<input type="radio" name="quality" value="medium"></label>
+                <label>Large<input type="radio" name="quality" value="large"></label>
+                <label>HD<input type="radio" name="quality" value="hd720"></label>
+                <input type="text" class="saveValue hideInput" data-property="quality">
+            </div>
 
-        <div id="increments" class="sub-option">
-            <h5>Increment (s): </h5>
-            <label>5<input type="radio" name="increments" value="5"></label>
-            <label>10<input type="radio" name="increments" value="10"></label>
-            <label>20<input type="radio" name="increments" value="20"></label>
-            <label>30<input type="radio" name="increments" value="30"></label>
-            <label>60<input type="radio" name="increments" value="60"></label>
-            <input type="text" class="saveValue hideInput" data-property="increment">
-        </div>
+            <div id="increments" class="sub-option">
+                <h5>Increment (s): </h5>
+                <label>5<input type="radio" name="increments" value="5"></label>
+                <label>10<input type="radio" name="increments" value="10"></label>
+                <label>20<input type="radio" name="increments" value="20"></label>
+                <label>30<input type="radio" name="increments" value="30"></label>
+                <label>60<input type="radio" name="increments" value="60"></label>
+                <input type="text" class="saveValue hideInput" data-property="increment">
+            </div>
 
-        <div id="increment-delay" class="sub-option">
-            <h5>Delay b/w Increments (s): </h5>
-            <div id="increment-delay-slider" class="slider"></div>
-            <input type="text" class="increment-delay-value">
-            <input type="text" class="saveValue hideInput" data-property="incrementFactor">
+            <div id="increment-delay" class="sub-option">
+                <h5>Delay b/w Increments (s): </h5>
+                <div id="increment-delay-slider" class="slider"></div>
+                <input type="text" class="increment-delay-value">
+                <input type="text" class="saveValue hideInput" data-property="incrementFactor">
+            </div>
         </div>
     </div>
 </section>

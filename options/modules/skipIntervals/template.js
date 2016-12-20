@@ -9,9 +9,20 @@ function skipIntervals () {
 
         if (inputField.prop("checked")) {
             subOption.find('.saveValue').val("enabled");
+
+            // Enabling settings change if module is enabled.
+            subOption.siblings('.disableSettings').removeClass('disableSettings').addClass('enableSettings');
         } else {
             subOption.find('.saveValue').val("disabled");
+
+            // Disabling settings change if module is disabled.
+            subOption.siblings('.enableSettings').removeClass('enableSettings').addClass('disableSettings');
         }
+    });
+
+    // Prevent changes to settings if settings are disabled.
+    $('body').on('click', '.disableSettings', function(event) {
+        event.preventDefault();
     });
 
     $('body').on('change', '#skipIntervals #format input[name="format"]', function(event) {
@@ -56,15 +67,17 @@ function skipIntervals () {
 function skipIntervals_restoreSettings (settings) {
     console.log(settings);
     console.log(settings.skipIntervals.enabled);
-    var enabledSetting; // A variable to store the boolean value of the "enabled" setting
+    var enabledSettingVal; // A variable to store the boolean value of the "enabled" setting
     if (settings.skipIntervals.enabled == "enabled") {
-        enabledSetting = true;
+        enabledSettingVal = true;
+        $('#skipIntervals .addEnableSettingState').removeClass('addEnableSettingState').addClass('enableSettings');
     } else {
-        enabledSetting = false;
+        enabledSettingVal = false;
+        $('#skipIntervals .addEnableSettingState').removeClass('addEnableSettingState').addClass('disableSettings');
     }
 
     // Load Enable checkbox value
-    $('#skipIntervals #enable input[type="checkbox"]').prop("checked", enabledSetting);
+    $('#skipIntervals #enable input[type="checkbox"]').prop("checked", enabledSettingVal);
     $('#skipIntervals #enable .saveValue').val(settings.skipIntervals.enabled);
 
     // Load Format radio button value

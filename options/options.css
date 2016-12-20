@@ -60,6 +60,10 @@ nav {
         border-radius: 0.7em; }
       #content #insertSettings .option .hideInput {
         display: none !important; }
+      #content #insertSettings .option .enableSettings {
+        opacity: 1; }
+      #content #insertSettings .option .disableSettings {
+        opacity: 0.5; }
       #content #insertSettings .option .sub-option {
         margin: 1em 0em 1em; }
         #content #insertSettings .option .sub-option > * {
