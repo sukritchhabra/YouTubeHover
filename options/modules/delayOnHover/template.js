@@ -16,11 +16,11 @@ function delayOnHover () {
 }
 
 function delayOnHover_updateDelayValue (delayVal, parentDiv) {
-        parentDiv.find('input').val(delayVal);
+        parentDiv.find('.saveValue').val(delayVal).trigger('change');
 }
 
 
 function delayOnHover_restoreSettings (settings) {
     $('#delayOnHover .slider').slider('value', settings.delayOnHover.hoverDelay);
-    $('#delayOnHover .saveValue').val(settings.delayOnHover.hoverDelay).trigger('change');
+    $('#delayOnHover .saveValue').val(settings.delayOnHover.hoverDelay);
 }
