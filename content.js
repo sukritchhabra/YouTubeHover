@@ -20,18 +20,18 @@ $(document).ready(function($) {
     $("body").on({
         mouseenter: function () {
             var hoverState = true;
-            var $video = $(this);
+            var $videoThumb = $(this);
 
-            var linkSelector = '.yt-lockup-thumbnail a.yt-uix-sessionlink, .thumb-wrapper a.yt-uix-sessionlink';
-            var link = $video.find(linkSelector)[0].href;
+            var linkSelector = 'a.yt-uix-sessionlink, a.yt-uix-sessionlink';
+            var link = $videoThumb.find(linkSelector)[0].href;
 
             var id = getVideoID(link);
 
             var thumbnailSelector = '.yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
-            var thumbnail = $video.find(thumbnailSelector);
+            var thumbnail = $videoThumb.find(thumbnailSelector);
 
             timeoutID = setTimeout(function() {
-                    addIFrame($video, thumbnail, id);
+                    addIFrame($videoThumb, thumbnail, id);
             }, YouTubeHoverSettings.delayOnHover.hoverDelay * 1000);
         },
         mouseleave: function () {
@@ -41,7 +41,9 @@ $(document).ready(function($) {
             removeIFrame($(this), thumbnailSelector);
             console.log('exited');
         }
-    }, ".yt-shelf-grid-item, .expanded-shelf-content-item, .video-list-item");
+    }, ".yt-shelf-grid-item, \
+        .expanded-shelf-content-item .yt-lockup-thumbnail, .expanded-shelf-content-item .thumb-wrapper, \
+        .video-list-item");
 
     setupControllers(controllerList);
 
