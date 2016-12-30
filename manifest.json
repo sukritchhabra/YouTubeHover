@@ -2,8 +2,8 @@
     "manifest_version": 2,
 
     "name": "YouTubeHover",
-    "description": "A chrome extension that plays videos on Youtube when you hover on their images.",
-    "version": "1.0.1",
+    "description": "A Chrome Extesion that allows you to preview video when you hover on the thumbnails of videos.",
+    "version": "0.1.0",
 
     "author": "Sukrit Chhabra",
 

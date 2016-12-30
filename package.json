@@ -1,7 +1,7 @@
 {
   "name": "youtubehover",
-  "version": "1.0.0",
-  "description": "A Chrome Extesion that plays YouTube videos when you hover on their images.",
+  "version": "0.1.0",
+  "description": "A Chrome Extesion that allows you to preview video when you hover on the thumbnails of videos.",
   "main": "content.js",
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@
   "authors": [
     "Sukrit Chhabra <sukrit.chhabra@gmail.com>"
   ],
-  "description": "A Chrome Extesion that plays YouTube videos when you hover on their images.",
+  "description": "A Chrome Extesion that allows you to preview video when you hover on the thumbnails of videos.",
   "main": "",
   "keywords": [
     "extension",
