@@ -73,17 +73,18 @@ $(document).ready(function($) {
      * @param {[Object]} img             [The image as a jQuery Object]
      * @param {[String]} vID             [ID of the Video]
      */
-    function addIFrame ($videoContainer, img, vID) {
-        var width = img[0].width + "px";
-        var height = img[0].height + "px";
+    function addIFrame ($videoContainer, $img, vID) {
+        var width = $img[0].width + "px";
+        var height = $img[0].height + "px";
 
         iframeHTML = '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
                      '?controls=0&autoplay=1&showinfo=0&start=0&enablejsapi=1" frameborder="0"' +
                      'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
 
-        $(img).parent().append(iframeHTML);
-        img.css('display', 'none');
+        $img.parent().append(iframeHTML);
+        checkParentCSS('add', $img);
+        $img.css('display', 'none');
         $('body').trigger('youtubeHover_iframeAdded');
     }
 
@@ -94,8 +95,38 @@ $(document).ready(function($) {
      */
     function removeIFrame ($videoContainer, imgSelector) {
         $videoContainer.find(imgSelector).parent().find('iframe').remove();
+        checkParentCSS('remove', $videoContainer.find(imgSelector));
         $videoContainer.find(imgSelector).css('display', 'inline');
         $('body').trigger('youtubeHover_iframeRemoved');
+    }
+
+    /**
+     * Checks the CSS if the parent of the img to see if it has position values -100px.
+     * If it does then it sets them to 0 when called from the addIFrame function and resets
+     * them to -100px when called from the removeIFrame function.
+     *
+     * @param  {[String]} from    [Describes Which function called this function]
+     * @param  {[jquery]} $imgObj [the ImageObject]
+     */
+    function checkParentCSS (from, $imgObj) {
+        if (from === 'add') {
+            var imgParentCSS = $imgObj.parent().css(['position', 'top', 'bottom']);
+            if (imgParentCSS.top === '-100px' && imgParentCSS.bottom === '-100px') {
+                $imgObj.parent().css({
+                    top: '0',
+                    bottom: '0'
+                });
+                $imgObj.parent().data('youtubeHover_changedCSS', '1');
+            }
+        } else if (from === 'remove') {
+            if ($imgObj.parent().data('youtubeHover_changedCSS') === '1') {
+                $imgObj.parent().css({
+                    top: '-100px',
+                    bottom: '-100px'
+                });
+                $imgObj.parent().data('youtubeHover_changedCSS', '0');
+            }
+        }
     }
 
     function setupControllers (cList) {
