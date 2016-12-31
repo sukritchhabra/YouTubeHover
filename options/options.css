@@ -81,11 +81,16 @@ nav {
           #content #insertSettings .option .sub-option a.sub-option-tooltip:hover {
             cursor: pointer;
             opacity: 0.7; }
-        #content #insertSettings .option .sub-option .tooltip[role="tooltip"].right .tooltip-arrow {
+        #content #insertSettings .option .sub-option .tooltip[role="tooltip"].right .tooltip-arrow.question {
+          border-right-color: #2959a5; }
+        #content #insertSettings .option .sub-option .tooltip[role="tooltip"].right .tooltip-arrow.connection {
           border-right-color: #b33e3e; }
         #content #insertSettings .option .sub-option .tooltip[role="tooltip"] .tooltip-inner {
-          background-color: #b33e3e;
           color: white; }
+          #content #insertSettings .option .sub-option .tooltip[role="tooltip"] .tooltip-inner.question {
+            background-color: #2959a5; }
+          #content #insertSettings .option .sub-option .tooltip[role="tooltip"] .tooltip-inner.connection {
+            background-color: #b33e3e; }
         #content #insertSettings .option .sub-option .slider {
           width: 30%; }
           #content #insertSettings .option .sub-option .slider .ui-slider-handle {

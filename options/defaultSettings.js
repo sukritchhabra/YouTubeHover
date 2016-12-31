@@ -8,6 +8,6 @@ var defaultSettings = {
         format: "playing",
         increment: "20",
         incrementFactor: "50",
-        quality: "medium"
+        quality: "small"
     }
 };

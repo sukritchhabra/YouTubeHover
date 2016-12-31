@@ -3,7 +3,21 @@ $(document).ready(function($) {
     restoreOptions();
     loadExampleVideoMarkup();
 
-    $('.sub-option-tooltip').tooltip();
+    // Initializing question tooltips.
+    $('.sub-option-tooltip.question').tooltip({
+        template:  '<div class="tooltip" role="tooltip">\
+                        <div class="tooltip-arrow question"></div>\
+                        <div class="tooltip-inner question"></div>\
+                    </div>'
+    });
+
+    // Initializing connection tooltips.
+    $('.sub-option-tooltip.connection').tooltip({
+        template:  '<div class="tooltip" role="tooltip">\
+                        <div class="tooltip-arrow connection"></div>\
+                        <div class="tooltip-inner connection"></div>\
+                    </div>'
+    });
 
     // Detecting click on the save button
     $('body').on('click', '#save', function(event) {

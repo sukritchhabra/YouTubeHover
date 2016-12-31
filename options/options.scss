@@ -125,13 +125,26 @@ nav {
                 .tooltip[role="tooltip"] {
                     &.right {
                         .tooltip-arrow {
-                            border-right-color: #b33e3e;
+                            &.question {
+                                border-right-color: #2959a5;
+                            }
+
+                            &.connection {
+                                border-right-color: #b33e3e;
+                            }
                         }
                     }
 
                     .tooltip-inner {
-                        background-color: #b33e3e;
                         color: white;
+
+                        &.question {
+                            background-color: #2959a5;
+                        }
+
+                        &.connection {
+                            background-color: #b33e3e;
+                        }
                     }
                 }
 
