@@ -3,6 +3,8 @@ $(document).ready(function($) {
     restoreOptions();
     loadExampleVideoMarkup();
 
+    $('.sub-option-tooltip').tooltip();
+
     // Detecting click on the save button
     $('body').on('click', '#save', function(event) {
         saveOptions('save');

@@ -15,12 +15,16 @@
             </div>
 
             <div id="quality" class="sub-option">
+                <h5>Quality: </h5>
                 <label>Auto<input type="radio" name="quality" value="auto"></label>
+                <label>Tiny<input type="radio" name="quality" value="tiny"></label>
                 <label>Small<input type="radio" name="quality" value="small"></label>
                 <label>Medium<input type="radio" name="quality" value="medium"></label>
                 <label>Large<input type="radio" name="quality" value="large"></label>
                 <label>HD<input type="radio" name="quality" value="hd720"></label>
                 <input type="text" class="saveValue hideInput" data-property="quality">
+
+                <a class="sub-option-tooltip" data-toggle="tooltip" data-placement="right" title="Tiny or Small for slower internet connections."><span class="fa fa-question"></span></a>
             </div>
 
             <div id="increments" class="sub-option">
@@ -31,6 +35,8 @@
                 <label>30<input type="radio" name="increments" value="30"></label>
                 <label>60<input type="radio" name="increments" value="60"></label>
                 <input type="text" class="saveValue hideInput" data-property="increment">
+
+                <a class="sub-option-tooltip" data-toggle="tooltip" data-placement="right" title="Decrease for slower internet connections."><span class="fa fa-question"></span></a>
             </div>
 
             <div id="increment-delay" class="sub-option">
@@ -38,6 +44,8 @@
                 <div id="increment-delay-slider" class="slider"></div>
                 <input type="text" class="increment-delay-value">
                 <input type="text" class="saveValue hideInput" data-property="incrementFactor">
+
+                <a class="sub-option-tooltip" data-toggle="tooltip" data-placement="right" title="Increase for slower internet connections."><span class="fa fa-question"></span></a>
             </div>
         </div>
     </div>

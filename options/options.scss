@@ -112,6 +112,29 @@ nav {
                     padding: 0 .5em;
                 }
 
+                a.sub-option-tooltip {
+                    color: black;
+                    opacity: 0.3;
+
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.7;
+                    }
+                }
+
+                .tooltip[role="tooltip"] {
+                    &.right {
+                        .tooltip-arrow {
+                            border-right-color: #b33e3e;
+                        }
+                    }
+
+                    .tooltip-inner {
+                        background-color: #b33e3e;
+                        color: white;
+                    }
+                }
+
                 .slider {
                     width: 30%;
 

@@ -43,7 +43,8 @@ $(document).ready(function($) {
         }
     }, ".yt-shelf-grid-item, \
         .expanded-shelf-content-item .yt-lockup-thumbnail, .expanded-shelf-content-item .thumb-wrapper, \
-        .video-list-item");
+        .video-list-item"
+    );
 
     setupControllers(controllerList);
 
