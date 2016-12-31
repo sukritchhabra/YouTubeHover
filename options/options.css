@@ -102,6 +102,27 @@ nav {
       width: 22em;
       list-style-type: none; }
 
+.hint {
+  clear: both;
+  margin: 35em 0 0;
+  padding-top: 5em;
+  text-align: center; }
+  .hint .hint-wrapper {
+    background-color: #484848;
+    width: 35%;
+    margin: 0 auto;
+    padding: 0.4em;
+    border-radius: 15px;
+    color: white; }
+    .hint .hint-wrapper .fa {
+      font-size: 1.3em;
+      color: #fffb00;
+      vertical-align: middle; }
+    .hint .hint-wrapper .hint-text {
+      margin-left: 1em;
+      font-size: 1em;
+      font-weight: 300; }
+
 /* Save Button */
 button#save {
   margin: 2em 5em;
