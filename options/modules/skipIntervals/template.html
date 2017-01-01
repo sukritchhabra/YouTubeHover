@@ -24,7 +24,9 @@
                 <label>HD<input type="radio" name="quality" value="hd720"></label>
                 <input type="text" class="saveValue hideInput" data-property="quality">
 
-                <a class="sub-option-tooltip connection" data-toggle="tooltip" data-placement="right" title="Tiny or Small for slower internet connections."><span class="fa fa-signal"></span></a>
+                <div class="sub-option-tooltips">
+                    <a class="sub-option-tooltip connection" data-toggle="tooltip" data-placement="right" title="Tiny or Small for slower internet connections."><span class="fa fa-signal"></span></a>
+                </div>
             </div>
 
             <div id="increments" class="sub-option">
@@ -36,9 +38,12 @@
                 <label>60<input type="radio" name="increments" value="60"></label>
                 <input type="text" class="saveValue hideInput" data-property="increment">
 
-                <a class="sub-option-tooltip question" data-toggle="tooltip" data-placement="right" title="Size of each increment in seconds."><span class="fa fa-question"></span></a>
+                <div class="sub-option-tooltips">
+                    <a class="sub-option-tooltip question" data-toggle="tooltip" data-placement="right" title="Size of each increment in seconds."><span class="fa fa-question"></span></a>
 
-                <a class="sub-option-tooltip connection" data-toggle="tooltip" data-placement="right" title="Decrease for slower internet connections."><span class="fa fa-signal"></span></a>
+                    <a class="sub-option-tooltip connection" data-toggle="tooltip" data-placement="right" title="Decrease for slower internet connections."><span class="fa fa-signal"></span></a>
+                </div>
+
             </div>
 
             <div id="increment-delay" class="sub-option">
@@ -47,7 +52,11 @@
                 <input type="text" class="increment-delay-value">
                 <input type="text" class="saveValue hideInput" data-property="incrementFactor">
 
-                <a class="sub-option-tooltip connection" data-toggle="tooltip" data-placement="right" title="Increase for slower internet connections."><span class="fa fa-signal"></span></a>
+                <div class="sub-option-tooltips">
+                    <a class="sub-option-tooltip rule" data-toggle="tooltip" data-placement="right" title="Should be less than the increment size."><span class="fa fa-exclamation"></span></a>
+
+                    <a class="sub-option-tooltip connection" data-toggle="tooltip" data-placement="right" title="Increase for slower internet connections."><span class="fa fa-signal"></span></a>
+                </div>
             </div>
         </div>
     </div>

@@ -112,38 +112,49 @@ nav {
                     padding: 0 .5em;
                 }
 
-                a.sub-option-tooltip {
-                    color: black;
-                    opacity: 0.3;
+                .sub-option-tooltips {
+                    a.sub-option-tooltip {
+                        color: black;
+                        opacity: 0.3;
+                        margin-right: 1em;
 
-                    &:hover {
-                        cursor: pointer;
-                        opacity: 0.7;
+                        &:hover {
+                            cursor: pointer;
+                            opacity: 0.7;
+                        }
                     }
-                }
 
-                .tooltip[role="tooltip"] {
-                    &.right {
-                        .tooltip-arrow {
+                    .tooltip[role="tooltip"] {
+                        &.right {
+                            .tooltip-arrow {
+                                &.question {
+                                    border-right-color: #2959a5;
+                                }
+
+                                &.rule {
+                                    border-right-color: #2959a5;
+                                }
+
+                                &.connection {
+                                    border-right-color: #b33e3e;
+                                }
+                            }
+                        }
+
+                        .tooltip-inner {
+                            color: white;
+
                             &.question {
-                                border-right-color: #2959a5;
+                                background-color: #2959a5;
+                            }
+
+                            &.rule {
+                                background-color: #2959a5;
                             }
 
                             &.connection {
-                                border-right-color: #b33e3e;
+                                background-color: #b33e3e;
                             }
-                        }
-                    }
-
-                    .tooltip-inner {
-                        color: white;
-
-                        &.question {
-                            background-color: #2959a5;
-                        }
-
-                        &.connection {
-                            background-color: #b33e3e;
                         }
                     }
                 }
