@@ -11,4 +11,22 @@
         margin-left: 1em;
         vertical-align: sub;
     }
+
+    .button-wrapper {
+        margin: 1em 0 1em;
+    }
+    #load-optimal-settings {
+        width: 12em;
+        text-align: center;
+        margin-left: 1em;
+        padding: 0.5em 0.5em;
+        border-radius: 6px;
+        background-color: #5763a5;
+        color: #fff;
+        cursor: pointer;
+
+        &.notify-load {
+            background-color: #279c37;
+        }
+    }
 }

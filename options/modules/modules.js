@@ -84,6 +84,18 @@ function skipIntervals () {
             skipIntervals_updateIncrementDelayValue(slider.value, $(this).parent());
         }
     });
+
+    $('#load-optimal-settings').on('click', function () {
+        var $button = $(this);
+        skipIntervals_loadOptimalSettings("tiny", 20, 75);
+
+        $button.text('Loaded!');
+        $button.addClass('notify-load');
+        setTimeout(function() {
+            $button.text('Load Optimal Settings');
+            $button.removeClass('notify-load');
+        }, 1000);
+    });
 }
 
 /**
@@ -125,6 +137,29 @@ function skipIntervals_restoreSettings (settings) {
     var sliderVal = (settings.skipIntervals.increment * settings.skipIntervals.incrementFactor) / 1000;
     $("#skipIntervals #increment-delay .slider").slider("option", "value", sliderVal);
     $('#skipIntervals #increment-delay .saveValue').val(settings.skipIntervals.incrementFactor);
+}
+
+/**
+ * Loads optimal setting if a user is facing trouble with choosing settings in accordance with their connection.
+ * @param  {[String]}  optimalQuality
+ * @param  {[Integer]} optimalIncrement
+ * @param  {[Integer]} optimalFactor
+ */
+function skipIntervals_loadOptimalSettings (optimalQuality, optimalIncrement, optimalFactor) {
+    // Load Quality radio button value
+    var qualityRadioSelector = '#skipIntervals #quality input[value="' + optimalQuality + '"]';
+    $(qualityRadioSelector).prop("checked", true);
+    $('#skipIntervals #quality .saveValue').val(optimalQuality);
+
+    // Load Increments value
+    var incrementRadioSelector = '#skipIntervals #increments input[value="' + optimalIncrement + '"]';
+    $(incrementRadioSelector).prop("checked", true);
+    $('#skipIntervals #increments .saveValue').val(optimalIncrement);
+
+    // Load Increments Delay value
+    var sliderVal = (optimalIncrement * optimalFactor) / 1000;
+    $("#skipIntervals #increment-delay .slider").slider("option", "value", sliderVal);
+    $('#skipIntervals #increment-delay .saveValue').val(optimalFactor);
 }
 
 /**
