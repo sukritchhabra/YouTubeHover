@@ -1,3 +1,8 @@
+// playVideo.js
+
+function controller_playVideo () {
+    console.log('in playVideo');
+}
 // default.js
 var YouTubeHoverPlayer;
 var YouTubeHover_playerExists = false;
@@ -37,6 +42,10 @@ function controller_default () {
  */
 function YouTubeHover_onPlayerReady(event) {
     $('body').trigger('youtubeHover_playerReady');
+
+    // Set volume of player.
+    var playerVolume = YouTubeHoverSettings.volume.vol;
+    YouTubeHoverPlayer.setVolume(playerVolume);
 }
 
 /**
@@ -46,11 +55,6 @@ function YouTubeHover_onPlayerReady(event) {
  */
 function YouTubeHover_onPlayerStateChange(event) {
     console.log('State Changed');
-}
-// playVideo.js
-
-function controller_playVideo () {
-    console.log('in playVideo');
 }
 // skipIntervals.js
 var skipIntervals_timeoutID;

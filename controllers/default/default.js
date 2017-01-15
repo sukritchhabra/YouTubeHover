@@ -37,6 +37,10 @@ function controller_default () {
  */
 function YouTubeHover_onPlayerReady(event) {
     $('body').trigger('youtubeHover_playerReady');
+
+    // Set volume of player.
+    var playerVolume = YouTubeHoverSettings.volume.vol;
+    YouTubeHoverPlayer.setVolume(playerVolume);
 }
 
 /**

@@ -4,7 +4,7 @@ var defaultSettings = {
     },
 
     volume: {
-        vol: 75
+        vol: 60
     },
 
     skipIntervals: {
