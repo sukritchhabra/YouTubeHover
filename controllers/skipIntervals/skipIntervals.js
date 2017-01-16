@@ -1,11 +1,8 @@
 // skipIntervals.js
-var skipIntervals_timeoutID;
-var skipIntervals_clearTimeoutArr = [];
+(function ($) {
+    var skipIntervals_timeoutID;
+    var skipIntervals_clearTimeoutArr = [];
 
-/**
- * [Default controller function that binds events for the controller.]
- */
-function controller_skipIntervals () {
     // When iframe is added.
     $('body').on('youtubeHover_playerReady', function () {
         /**
@@ -54,4 +51,4 @@ function controller_skipIntervals () {
             });
         }
     });
-}
+})(window.jQuery);

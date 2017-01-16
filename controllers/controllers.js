@@ -1,17 +1,12 @@
 // playVideo.js
-
-function controller_playVideo () {
-    console.log('in playVideo');
-}
+(function ($) {
+    console.log('in playVideo.js');
+})(window.jQuery);
 // default.js
-var YouTubeHoverPlayer;
+var YouTubeHoverPlayer; // Global player object available to all controllers.
 var YouTubeHover_playerExists = false;
 
-
-/**
- * [Default controller function that binds events for the controller.]
- */
-function controller_default () {
+(function ($) {
     // When iframe is added.
     $('body').on('youtubeHover_iframeAdded', function () {
         // Setup YouTubeHoverPlayer
@@ -34,36 +29,34 @@ function controller_default () {
 
         YouTubeHover_playerExists = false;
     });
-}
 
-/**
- * [Default function that is called when the player is ready.]
- * @param  {[Event]} event [An object containing event details.]
- */
-function YouTubeHover_onPlayerReady(event) {
-    $('body').trigger('youtubeHover_playerReady');
 
-    // Set volume of player.
-    var playerVolume = YouTubeHoverSettings.volume.vol;
-    YouTubeHoverPlayer.setVolume(playerVolume);
-}
+    /**
+     * [Default function that is called when the player is ready.]
+     * @param  {[Event]} event [An object containing event details.]
+     */
+    function YouTubeHover_onPlayerReady(event) {
+        $('body').trigger('youtubeHover_playerReady');
 
-/**
- * [Function that detects state changes on the player and can then take action upon the player.]
- * @param  {[Event]} event [An object containing event details.]
- * @return {[type]}        [description]
- */
-function YouTubeHover_onPlayerStateChange(event) {
-    console.log('State Changed');
-}
+        // Set volume of player.
+        var playerVolume = YouTubeHoverSettings.volume.vol;
+        YouTubeHoverPlayer.setVolume(playerVolume);
+    }
+
+    /**
+     * [Function that detects state changes on the player and can then take action upon the player.]
+     * @param  {[Event]} event [An object containing event details.]
+     * @return {[type]}        [description]
+     */
+    function YouTubeHover_onPlayerStateChange(event) {
+        console.log('State Changed');
+    }
+})(window.jQuery);
 // skipIntervals.js
-var skipIntervals_timeoutID;
-var skipIntervals_clearTimeoutArr = [];
+(function ($) {
+    var skipIntervals_timeoutID;
+    var skipIntervals_clearTimeoutArr = [];
 
-/**
- * [Default controller function that binds events for the controller.]
- */
-function controller_skipIntervals () {
     // When iframe is added.
     $('body').on('youtubeHover_playerReady', function () {
         /**
@@ -112,4 +105,4 @@ function controller_skipIntervals () {
             });
         }
     });
-}
+})(window.jQuery);

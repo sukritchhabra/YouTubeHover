@@ -46,7 +46,7 @@ $(document).ready(function($) {
         .video-list-item"
     );
 
-    setupControllers(controllerList);
+
 
     /**
      * Parses a YouTube video URl and returns its ID
@@ -129,6 +129,19 @@ $(document).ready(function($) {
         }
     }
 
+    /**
+     * Use of this function is deprecated!
+     *
+     * This function was used before using IIFE's to scope individual controller files.
+     * After using IIFE we do not need default controller functions to bind events as the event bindings are
+     * inserted in the IIFE [instead of default controller functions].
+     * This allows for individual controller variables and functions to be scoped to their IIFE and
+     * not be accessible by other controllers.
+     *
+     * Function to setup individual controllers.
+     * @param  {[Array]} cList [List of controllers]
+     *
+     */
     function setupControllers (cList) {
         console.log(cList);
         $.each(cList, function(index, val) {

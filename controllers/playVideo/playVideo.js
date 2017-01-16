@@ -1,5 +1,4 @@
 // playVideo.js
-
-function controller_playVideo () {
-    console.log('in playVideo');
-}
+(function ($) {
+    console.log('in playVideo.js');
+})(window.jQuery);

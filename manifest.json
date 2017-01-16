@@ -25,7 +25,6 @@
       "js": [ "bower_components/jquery/dist/jquery.min.js",
           "iframe_api.js",
           "widgetAPI.js",
-          "controllers/controllerList.js",
           "options/defaultSettings.js",
           "content.js",
           "controllers/controllers.min.js"
