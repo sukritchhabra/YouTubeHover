@@ -30,3 +30,20 @@
         }
     }
 }
+#volume {
+    .sub-option {
+        .fa-volume-off {
+            margin-left: 2.5em !important;
+            color: #a5a5a5;
+            font-size: 1.5em;
+
+            &.muted {
+                color: #bd0000;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

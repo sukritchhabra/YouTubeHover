@@ -68,7 +68,8 @@ nav {
         margin: 1em 0em 1em; }
         #content #insertSettings .option .sub-option > * {
           display: inline-block;
-          margin-left: 1em; }
+          margin-left: 1em;
+          vertical-align: middle; }
         #content #insertSettings .option .sub-option input[type="text"]:not(.hideInput) {
           width: 3em;
           border: 1px solid #ccc;
