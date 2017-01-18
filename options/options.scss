@@ -70,6 +70,10 @@ nav {
             border: solid 1px #dedede;
             border-radius: 0.7em;
 
+            &:nth-of-type(2) {
+                margin: 0.3em 5em 0;
+            }
+
             h4 span.fa{
                 float: right;
                 position: relative;
