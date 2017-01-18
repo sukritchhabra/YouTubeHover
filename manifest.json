@@ -21,6 +21,10 @@
       "storage"
     ],
 
+    "background": {
+      "scripts": ["background.js"]
+    },
+
     "content_scripts": [ {
       "js": [
           "bower_components/jquery/dist/jquery.min.js",
@@ -34,5 +38,5 @@
       "matches": ["https://*.youtube.com/*"]
     }],
 
-    "content_security_policy": "script-src 'self' 'unsafe-eval' https://s.ytimg.com/; object-src 'self'"
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com https://s.ytimg.com/; object-src 'self'"
 }
