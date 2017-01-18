@@ -11,7 +11,7 @@ var defaultSettings = {
         enabled: "enabled",
         format: "playing",
         increment: "20",
-        incrementFactor: "50",
-        quality: "small"
+        incrementFactor: "75",
+        quality: "tiny"
     }
 };
