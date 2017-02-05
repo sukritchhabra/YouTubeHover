@@ -109,11 +109,28 @@ nav {
   #content #example {
     padding-top: 2em;
     width: 40%;
-    text-align: center; }
+    text-align: center;
+    /* Save Button */ }
     #content #example li {
       margin: auto;
       width: 22em;
       list-style-type: none; }
+    #content #example button#save {
+      margin: 2em 5em;
+      width: 8em;
+      color: white;
+      font-size: 1em;
+      font-family: 'Source Sans Pro', sans-serif;
+      border-radius: 6px;
+      border: none;
+      box-shadow: none;
+      text-shadow: none;
+      background-color: #428bca;
+      background-image: none; }
+      #content #example button#save:hover {
+        background-color: #447bab; }
+      #content #example button#save.saved {
+        background-color: #00ab25; }
 
 .hint {
   clear: both;
@@ -135,19 +152,3 @@ nav {
       margin-left: 1em;
       font-size: 1em;
       font-weight: 300; }
-
-/* Save Button */
-button#save {
-  margin: 2em 5em;
-  width: 8em;
-  color: white;
-  font-size: 1em;
-  font-family: 'Source Sans Pro', sans-serif;
-  border-radius: 6px;
-  border: none;
-  box-shadow: none;
-  text-shadow: none;
-  background-color: #428bca;
-  background-image: none; }
-  button#save:hover {
-    background-color: #447bab; }

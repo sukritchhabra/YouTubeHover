@@ -111,10 +111,10 @@ $(document).ready(function($) {
             chrome.storage.sync.set(valObj, function() {
                 // Update status to let user know options were saved.
                 $("#save").text('Saved!');
-                $("#save").css("background-color", "#00ab25");
+                $("#save").addClass('saved');
                 setTimeout(function() {
                     $("#save").text('Save Settings');
-                    $("#save").css("background-color", "#428bca");
+                    $("#save").removeClass('saved');
                 }, 1000);
             });
         } else if (eventTrigger == 'change') {
