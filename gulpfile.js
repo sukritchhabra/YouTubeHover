@@ -22,7 +22,7 @@ gulp.task('controllers', function() {
       .pipe(gulp.dest('controllers/'));
 });
 
-gulp.task('optionsModuleScripts', function() {
+gulp.task('options-module-scripts', function() {
     return gulp.src(paths.options_module_scripts)
       .pipe(concat('modules.js'))
       .pipe(gulp.dest('options/modules/'))
@@ -31,7 +31,7 @@ gulp.task('optionsModuleScripts', function() {
       .pipe(gulp.dest('options/modules/min/'));
 });
 
-gulp.task('optionsModuleStyles', function() {
+gulp.task('options-module-styles', function() {
     return gulp.src(paths.options_module_styles)
       .pipe(concat('modules.scss'))
       .pipe(gulp.dest('options/modules/'))
@@ -42,7 +42,7 @@ gulp.task('optionsModuleStyles', function() {
       .pipe(gulp.dest('options/modules/min/'));
 });
 
-gulp.task('optionsStyle', function() {
+gulp.task('options-style', function() {
     return gulp.src(paths.options_style)
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('options/'))
@@ -52,11 +52,11 @@ gulp.task('optionsStyle', function() {
 gulp.task('watch', function() {
     // Watch .js files
     gulp.watch('controllers/*/*.js', ['controllers']);
-    gulp.watch('options/modules/*/*.js', ['optionsModuleScripts']);
-    gulp.watch('options/modules/*/*.scss', ['optionsModuleStyles']);
-    gulp.watch('options/options.scss', ['optionsStyle']);
+    gulp.watch('options/modules/*/*.js', ['options-module-scripts']);
+    gulp.watch('options/modules/*/*.scss', ['options-module-styles']);
+    gulp.watch('options/options.scss', ['options-style']);
  });
 
 // Default Task
-gulp.task('default', ['watch', 'controllers', 'optionsModuleScripts', 'optionsModuleStyles', 'optionsStyle']);
+gulp.task('default', ['watch', 'controllers', 'options-module-scripts', 'options-module-styles', 'options-style']);
 
