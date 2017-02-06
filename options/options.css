@@ -65,7 +65,7 @@ nav {
       #content #insertSettings .option .enableSettings {
         opacity: 1; }
       #content #insertSettings .option .disableSettings {
-        opacity: 0.5; }
+        opacity: 0.2; }
       #content #insertSettings .option .sub-option {
         margin: 1em 0em 1em; }
         #content #insertSettings .option .sub-option > * {
@@ -73,11 +73,12 @@ nav {
           margin-left: 1em;
           vertical-align: middle; }
         #content #insertSettings .option .sub-option input[type="text"]:not(.hideInput) {
-          width: 3em;
+          width: 3.2em;
           border: 1px solid #ccc;
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           border-radius: 4px;
-          padding: 0 .5em; }
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          padding: 0 .5em;
+          text-align: center; }
         #content #insertSettings .option .sub-option .sub-option-tooltips a.sub-option-tooltip {
           color: black;
           opacity: 0.3;

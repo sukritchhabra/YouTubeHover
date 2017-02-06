@@ -7,7 +7,7 @@ function delayOnHover () {
     $('#delayOnHover .slider').slider({
         min: 0,
         max: 10,
-        step: 0.5,
+        step: 0.25,
         animate: "fast",
         change: function(event, slider) {
             delayOnHover_updateDelayValue(slider.value, $(this).parent());
