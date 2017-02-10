@@ -46,6 +46,20 @@ $(document).ready(function($) {
         .video-list-item"
     );
 
+    /**
+     * If skips ended before mouseleave. [ Also refer to skipIntervals.js ]
+     *
+     * Without this being handled, the Iframe would stay there with a new video suggestion, but after this case
+     * is handled, the Iframe is removed, the image is restored and the state is reverted to
+     * as it was before the user hovered over the thumbnail.
+     */
+    $('body').on('finished-skipping', function(event) {
+        clearTimeout(timeoutID);
+
+        var thumbnailSelector = '.yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
+        removeIFrame($(this), thumbnailSelector);
+    });
+
 
 
     /**

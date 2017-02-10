@@ -33,6 +33,18 @@
                     skipIntervals_clearTimeoutArr.push(skipIntervals_timeoutID);
                 })(i);
             }
+
+            /**
+             * Handling case where skips ends before mouseleave.
+             * In case this happens, Iframe needs to be removed and the image restored.
+             *
+             * Instead of creating a remove function here, using an event on 'body' to
+             * let content.js know the video has ended. Using event as a way to pass messages between the two scripts.
+             */
+            setTimeout(function () {
+                $('body').trigger('finished-skipping'); // Trigger an event to have content.js call removeIframe()
+            }, ((YouTubeHoverPlayer.getDuration())/increment)*1000);
+
         }
     });
 
