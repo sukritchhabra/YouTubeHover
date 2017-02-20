@@ -1,4 +1,3 @@
-// skipIntervals.js
 (function ($) {
     var skipIntervals_timeoutID;
     var skipIntervals_clearTimeoutArr = [];

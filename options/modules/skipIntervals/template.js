@@ -77,8 +77,6 @@ function skipIntervals () {
  * @param  {[JSON]} settings [An object containing the settings recieved from chrome]
  */
 function skipIntervals_restoreSettings (settings) {
-    console.log(settings);
-    console.log(settings.skipIntervals.enabled);
     var enabledSettingVal; // A variable to store the boolean value of the "enabled" setting
     if (settings.skipIntervals.enabled == "enabled") {
         enabledSettingVal = true;

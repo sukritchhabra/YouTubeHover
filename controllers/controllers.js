@@ -1,4 +1,3 @@
-// default.js
 var YouTubeHoverPlayer; // Global player object available to all controllers.
 var YouTubeHover_playerExists = false;
 
@@ -48,11 +47,6 @@ var YouTubeHover_playerExists = false;
         console.log('State Changed');
     }
 })(window.jQuery);
-// playVideo.js
-(function ($) {
-    console.log('in playVideo.js');
-})(window.jQuery);
-// skipIntervals.js
 (function ($) {
     var skipIntervals_timeoutID;
     var skipIntervals_clearTimeoutArr = [];

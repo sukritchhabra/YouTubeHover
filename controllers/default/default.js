@@ -1,4 +1,3 @@
-// default.js
 var YouTubeHoverPlayer; // Global player object available to all controllers.
 var YouTubeHover_playerExists = false;
 
