@@ -3,8 +3,8 @@ var defaultSettings = {
         hoverDelay: 1
     },
 
-    volume: {
-        vol: 60
+    player: {
+        volume: 60
     },
 
     skipIntervals: {

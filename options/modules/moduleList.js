@@ -1,6 +1,6 @@
 var moduleList = [
     "toolbar",
     "delayOnHover",
-    "volume",
+    "player",
     "skipIntervals"
 ];

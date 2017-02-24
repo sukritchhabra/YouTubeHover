@@ -3,6 +3,15 @@
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
 
+#player #volume .fa-volume-off {
+  margin-left: 2.5em !important;
+  color: #a5a5a5;
+  font-size: 1.5em; }
+  #player #volume .fa-volume-off.muted {
+    color: #bd0000; }
+  #player #volume .fa-volume-off:hover {
+    cursor: pointer; }
+
 #skipIntervals .sub-option input {
   margin-left: 1em;
   vertical-align: sub; }
@@ -35,12 +44,3 @@
       #toolbar .tools-container .tool:hover {
         cursor: pointer;
         opacity: 0.5; }
-
-#volume .sub-option .fa-volume-off {
-  margin-left: 2.5em !important;
-  color: #a5a5a5;
-  font-size: 1.5em; }
-  #volume .sub-option .fa-volume-off.muted {
-    color: #bd0000; }
-  #volume .sub-option .fa-volume-off:hover {
-    cursor: pointer; }

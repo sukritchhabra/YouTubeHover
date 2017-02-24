@@ -24,6 +24,119 @@ function delayOnHover_restoreSettings (settings) {
     $('#delayOnHover .slider').slider('value', settings.delayOnHover.hoverDelay);
     $('#delayOnHover .saveValue').val(settings.delayOnHover.hoverDelay);
 }
+var playerModule =
+(function ($) {
+    var volume = {
+        init: function (argument) {
+            $('body').on('click', '#volume .fa-volume-off', function(event) {
+                volume.checkMute();
+            });
+
+            // Initiate Volume Slider
+            $('#volume .slider').slider({
+                min: 0,
+                max: 100,
+                step: 5,
+                animate: "fast",
+                change: function(event, slider) {
+                    volume.updateVolume(slider.value, $(this).parent());
+                }
+            });
+        },
+
+        /**
+         * Function that is called when a change occurs in the volume slider
+         * to update appropriate input fields.
+         * @param  {[Integer]} vol  [Value selected by the user in the slider]
+         * @param  {[DOM Element]} parentDiv [The parent div of the slider]
+         */
+        updateVolume: function (vol, parentDiv) {
+            if (vol == 0) {
+                $('#volume .fa-volume-off').addClass('muted');
+            } else {
+                $('#volume .muted').removeClass('muted');
+            }
+            parentDiv.find('.saveValue').val(vol).trigger('change');
+        },
+
+        /**
+         * Function that checks the state of the mute button on click and act accordingly to
+         * either mute or unmute the video.
+         */
+        checkMute: function () {
+            if ($('#volume .fa-volume-off').hasClass('muted')) {
+                var $muteButton = $('#volume .fa-volume-off');
+
+                $('#volume .slider').slider('value', 100);
+                $('#volume .saveValue').val(100);
+                $muteButton.removeClass('muted');
+            } else {
+                var $muteButton = $('#volume .fa-volume-off');
+                $('#volume .slider').slider('value', 0);
+                $('#volume .saveValue').val(0);
+                $muteButton.addClass('muted');
+            }
+        },
+
+        restore: function (settings) {
+            volume.init();
+            $('#volume .slider').slider('value', settings.player.volume);
+            $('#volume .saveValue').val(settings.player.volume);
+            if (settings.player.volume == 0) {
+                $('#volume .fa-volume-off').addClass('muted');
+            }
+        }
+    };
+
+    return {
+        restoreVolume: volume.restore
+    }
+})(window.jQuery);
+
+/**
+ * Default function that binds default events for the volume module.
+ */
+function player () {
+    console.log('in player');
+}
+
+/**
+ * Function that restores the settings for the player module.
+ * @param  {[JSON]} settings [An object containing the settings recieved from chrome]
+ */
+function player_restoreSettings (settings) {
+    playerModule.restoreVolume(settings);
+}
+
+/**
+ * Default toolbar function
+ */
+function toolbar () {
+    $('body').on('click', '#toolbar .collapse-all', function(event) {
+        toolbar_collapseAll();
+    });
+}
+
+/**
+ * Default restore function.
+ * @param  {[JSON]} settings [Settings object]
+ */
+function toolbar_restoreSettings (settings) {}
+
+function toolbar_collapseAll () {
+    var $wrappers = $('section.option .wrapper:visible'); // Find non-hidden (displayed) wrappers
+    var $options = $wrappers.closest('section.option'); // Get the closest section.option parent of the hidden wrappers
+    $wrappers.hide('fast'); // Hide wrappers
+
+    var chevronGlyphs = $options.find('h4 span.fa'); // Get chevron glyphs corrosponding to the displayed wrappers.
+    $.each(chevronGlyphs, function (index, chevronGlyph) {
+        if ($(chevronGlyph).hasClass('fa-chevron-down')) {
+            $(chevronGlyph).removeClass('fa-chevron-down').addClass('fa-chevron-up');
+        } else {
+            $(chevronGlyph).removeClass('fa-chevron-up').addClass('fa-chevron-down');
+        }
+    })
+}
 function skipIntervals () {
     $('body').on('change', '#skipIntervals #enable input[type="checkbox"]', function(event) {
         var inputField = $(this);
@@ -173,98 +286,4 @@ function skipIntervals_updateIncrementDelayValue (delayVal, parentDiv) {
 
     parentDiv.find('.increment-delay-value').val(delayVal);
     parentDiv.find('.saveValue').val(incrementFactor).trigger('change');
-}
-/**
- * Default toolbar function
- */
-function toolbar () {
-    $('body').on('click', '#toolbar .collapse-all', function(event) {
-        toolbar_collapseAll();
-    });
-}
-
-/**
- * Default restore function.
- * @param  {[JSON]} settings [Settings object]
- */
-function toolbar_restoreSettings (settings) {}
-
-function toolbar_collapseAll () {
-    var $wrappers = $('section.option .wrapper:visible'); // Find non-hidden (displayed) wrappers
-    var $options = $wrappers.closest('section.option'); // Get the closest section.option parent of the hidden wrappers
-    $wrappers.hide('fast'); // Hide wrappers
-
-    var chevronGlyphs = $options.find('h4 span.fa'); // Get chevron glyphs corrosponding to the displayed wrappers.
-    $.each(chevronGlyphs, function (index, chevronGlyph) {
-        if ($(chevronGlyph).hasClass('fa-chevron-down')) {
-            $(chevronGlyph).removeClass('fa-chevron-down').addClass('fa-chevron-up');
-        } else {
-            $(chevronGlyph).removeClass('fa-chevron-up').addClass('fa-chevron-down');
-        }
-    })
-}
-/**
- * Default function that binds default events for the volume module.
- */
-function volume () {
-    // Initiate Volume Slider
-    $('#volume .slider').slider({
-        min: 0,
-        max: 100,
-        step: 5,
-        animate: "fast",
-        change: function(event, slider) {
-            volume_updateVolume(slider.value, $(this).parent());
-        }
-    });
-
-    $('body').on('click', '#volume .sub-option .fa-volume-off', function(event) {
-        volume_checkMute();
-    });
-}
-
-/**
- * Function that restores the settings for the volume module.
- * @param  {[JSON]} settings [An object containing the settings recieved from chrome]
- */
-function volume_restoreSettings (settings) {
-    $('#volume .slider').slider('value', settings.volume.vol);
-    $('#volume .saveValue').val(settings.volume.vol);
-    if (settings.volume.vol == 0) {
-        $('#volume .sub-option .fa-volume-off').addClass('muted');
-    }
-}
-
-/**
- * Function that is called when a change occurs in the volume slider
- * to update appropriate input fields.
- * @param  {[Integer]} vol  [Value selected by the user in the slider]
- * @param  {[DOM Element]} parentDiv [The parent div of the slider]
- */
-function volume_updateVolume (vol, parentDiv) {
-    if (vol == 0) {
-        $('#volume .sub-option .fa-volume-off').addClass('muted');
-    } else {
-        $('#volume .muted').removeClass('muted');
-    }
-    parentDiv.find('.saveValue').val(vol).trigger('change');
-}
-
-/**
- * Function that checks the state of the mute button on click and act accordingly to
- * either mute or unmute the video.
- */
-function volume_checkMute () {
-    if ($('#volume .sub-option .fa-volume-off').hasClass('muted')) {
-        var $muteButton = $('#volume .sub-option .fa-volume-off');
-
-        $('#volume .slider').slider('value', 100);
-        $('#volume .saveValue').val(100);
-        $muteButton.removeClass('muted');
-    } else {
-        var $muteButton = $('#volume .sub-option .fa-volume-off');
-        $('#volume .slider').slider('value', 0);
-        $('#volume .saveValue').val(0);
-        $muteButton.addClass('muted');
-    }
 }
