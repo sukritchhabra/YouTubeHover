@@ -167,18 +167,9 @@ $(document).ready(function($) {
                 async: false,
                 success: function (response) {
                     $('#insertSettings').append(response);
-                    callDefaultFunction(val);
                 }
             });
         });
-    }
-
-    /**
-     * Takes a string (name of a function) and call that function
-     * @param  {[String]} name [Name of the module. (name of the default function should be the name of the module)]
-     */
-    function callDefaultFunction (name) {
-        eval(name)();
     }
 
     /**

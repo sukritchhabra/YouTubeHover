@@ -31,14 +31,6 @@ var delayOnHoverModule =
 
 })(window.jQuery);
 
-/**
- * Default function that binds default events for the delayOnHover module.
- * @return
- */
-function delayOnHover () {
-    console.log('in delayOnHover');
-}
-
 function delayOnHover_restoreSettings (settings) {
     delayOnHoverModule.restoreHoverDelay(settings);
 }
@@ -111,13 +103,6 @@ var playerModule =
         restoreVolume: volume.restore
     }
 })(window.jQuery);
-
-/**
- * Default function that binds default events for the volume module.
- */
-function player () {
-    console.log('in player');
-}
 
 /**
  * Function that restores the settings for the player module.
@@ -317,9 +302,6 @@ var skipIntervalsModule =
     }
 })(window.jQuery);
 
-function skipIntervals () {
-    console.log('in skip intervals');
-}
 
 /**
  * Function that restore the settings for the skip intervals module.
@@ -360,13 +342,6 @@ var toolbarModule =
     };
     collapseAll.init();
 })(window.jQuery);
-
-/**
- * Default toolbar function
- */
-function toolbar () {
-    console.log('in toolbar');
-}
 
 /**
  * Default restore function.

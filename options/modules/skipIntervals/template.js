@@ -188,9 +188,6 @@ var skipIntervalsModule =
     }
 })(window.jQuery);
 
-function skipIntervals () {
-    console.log('in skip intervals');
-}
 
 /**
  * Function that restore the settings for the skip intervals module.

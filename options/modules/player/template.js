@@ -68,13 +68,6 @@ var playerModule =
 })(window.jQuery);
 
 /**
- * Default function that binds default events for the volume module.
- */
-function player () {
-    console.log('in player');
-}
-
-/**
  * Function that restores the settings for the player module.
  * @param  {[JSON]} settings [An object containing the settings recieved from chrome]
  */

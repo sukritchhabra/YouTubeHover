@@ -31,14 +31,6 @@ var delayOnHoverModule =
 
 })(window.jQuery);
 
-/**
- * Default function that binds default events for the delayOnHover module.
- * @return
- */
-function delayOnHover () {
-    console.log('in delayOnHover');
-}
-
 function delayOnHover_restoreSettings (settings) {
     delayOnHoverModule.restoreHoverDelay(settings);
 }

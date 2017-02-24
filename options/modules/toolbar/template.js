@@ -26,13 +26,6 @@ var toolbarModule =
 })(window.jQuery);
 
 /**
- * Default toolbar function
- */
-function toolbar () {
-    console.log('in toolbar');
-}
-
-/**
  * Default restore function.
  * @param  {[JSON]} settings [Settings object]
  */
