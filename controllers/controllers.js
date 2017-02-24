@@ -34,7 +34,7 @@ var YouTubeHover_playerExists = false;
         $('body').trigger('youtubeHover_playerReady');
 
         // Set volume of player.
-        var playerVolume = YouTubeHoverSettings.volume.vol;
+        var playerVolume = YouTubeHoverSettings.player.volume;
         YouTubeHoverPlayer.setVolume(playerVolume);
     }
 
