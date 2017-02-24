@@ -91,7 +91,14 @@ $(document).ready(function($) {
         var width = $img[0].width + "px";
         var height = $img[0].height + "px";
 
-        iframeHTML = '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
+        var iframeHTML = '';
+        if (YouTubeHoverSettings.player.clickAction == "video") {
+            iframeHTML = '<div id="youtubeHover_frameOverlay" style="position:absolute; z-index: 999; width: ' + width + '; height: ' + height +';"></div>';
+        }
+
+
+        iframeHTML = iframeHTML +
+                     '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
                      '?controls=0&autoplay=1&showinfo=0&start=0&enablejsapi=1" frameborder="0"' +
                      'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
@@ -109,6 +116,7 @@ $(document).ready(function($) {
      */
     function removeIFrame ($videoContainer, imgSelector) {
         $videoContainer.find(imgSelector).parent().find('iframe').remove();
+        $videoContainer.find(imgSelector).parent().find('#youtubeHover_frameOverlay').remove();
         checkParentCSS('remove', $videoContainer.find(imgSelector));
         $videoContainer.find(imgSelector).css('display', 'inline');
         $('body').trigger('youtubeHover_iframeRemoved');
