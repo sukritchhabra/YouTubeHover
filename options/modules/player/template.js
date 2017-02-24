@@ -62,8 +62,27 @@ var playerModule =
         }
     };
 
+    var clickAction = {
+        init: function (argument) {
+            $('body').on('change', '#player #clickAction input[name="clickAction"]', function(event) {
+                var inputField = $(this);
+                var subOption = $(this).closest('.sub-option');
+                subOption.find('.saveValue').val(inputField.val());
+            });
+        },
+
+        restore: function (settings) {
+            clickAction.init();
+            // Load ClickAction radio button value
+            var clickActionRadioSelector = '#player #clickAction input[value="' + settings.player.clickAction + '"]';
+            $(clickActionRadioSelector).prop("checked", true);
+            $('#player #clickAction .saveValue').val(settings.player.clickAction);
+        }
+    };
+
     return {
-        restoreVolume: volume.restore
+        restoreVolume: volume.restore,
+        restoreClickAction: clickAction.restore
     }
 })(window.jQuery);
 
@@ -73,4 +92,5 @@ var playerModule =
  */
 function player_restoreSettings (settings) {
     playerModule.restoreVolume(settings);
+    playerModule.restoreClickAction(settings);
 }

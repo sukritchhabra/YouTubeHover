@@ -4,6 +4,7 @@ var defaultSettings = {
     },
 
     player: {
+        clickAction: "pause",
         volume: 60
     },
 

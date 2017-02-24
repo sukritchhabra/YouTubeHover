@@ -1,4 +1,9 @@
 #player {
+    .sub-option input {
+        margin-left: 1em;
+        vertical-align: sub;
+    }
+
     #volume {
         .fa-volume-off {
             margin-left: 2.5em !important;
