@@ -1,3 +1,6 @@
+/* globals YouTubeHoverSettings, YT, console */
+/* exported YouTubeHoverPlayer */
+
 var YouTubeHoverPlayer; // Global player object available to all controllers.
 var YouTubeHover_playerExists = false;
 
@@ -30,7 +33,7 @@ var YouTubeHover_playerExists = false;
      * [Default function that is called when the player is ready.]
      * @param  {[Event]} event [An object containing event details.]
      */
-    function YouTubeHover_onPlayerReady(event) {
+    function YouTubeHover_onPlayerReady() {
         $('body').trigger('youtubeHover_playerReady');
 
         // Set volume of player.
@@ -43,7 +46,7 @@ var YouTubeHover_playerExists = false;
      * @param  {[Event]} event [An object containing event details.]
      * @return {[type]}        [description]
      */
-    function YouTubeHover_onPlayerStateChange(event) {
+    function YouTubeHover_onPlayerStateChange() {
         console.log('State Changed');
     }
 })(window.jQuery);

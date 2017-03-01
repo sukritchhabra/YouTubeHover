@@ -1,0 +1,16 @@
+{
+    // Enforcing
+    "bitwise"       : true,     // true: Prohibit bitwise operators (&, |, ^, etc.)
+    "camelcase"     : false,    // true: Identifiers must be in camelCase
+    "eqeqeq"        : true,     // true: Require triple equals (===) for comparison
+    "undef"         : true,     // true: Require all non-global variables to be declared (prevents global leaks)
+    "unused"        : true,     // Unused variables:
+                                //   true     : all variables, last function parameter
+                                //   "vars"   : all variables only
+                                //   "strict" : all variables, all function parameters
+    "strict"        : false,    // true: Requires all functions run in ES5 Strict Mode
+
+
+    // Environments
+    "browser"       : true      // Web Browser (window, document, etc)
+}

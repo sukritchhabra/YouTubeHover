@@ -1,3 +1,6 @@
+/* jshint loopfunc: true */
+/* globals YouTubeHoverSettings, YouTubeHoverPlayer */
+
 (function ($) {
     var skipIntervals_timeoutID;
     var skipIntervals_clearTimeoutArr = [];
@@ -9,9 +12,9 @@
          * can change between the two different iframe additions (Only on the options page.)
          * This functionality is needed for the example on the options page.
          */
-        if (YouTubeHoverSettings.skipIntervals.enabled == "enabled") {
+        if (YouTubeHoverSettings.skipIntervals.enabled === "enabled") {
             // If user selected "Still", set volume to 0 and pause video to emulate still images.
-            if (YouTubeHoverSettings.skipIntervals.format == "still") {
+            if (YouTubeHoverSettings.skipIntervals.format === "still") {
                 YouTubeHoverPlayer.setVolume('0');
 
                 setTimeout(function () {
@@ -55,7 +58,7 @@
      * since we dont need YouTubeHoverPlayer for this, therefore decided to leave this as is for now.
      */
     $('body').on('youtubeHover_iframeRemoved', function () {
-        if (YouTubeHoverSettings.skipIntervals.enabled == "enabled") {
+        if (YouTubeHoverSettings.skipIntervals.enabled === "enabled") {
 
             skipIntervals_clearTimeoutArr.forEach(function(timer) {
                 clearTimeout(timer);

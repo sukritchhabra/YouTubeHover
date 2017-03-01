@@ -1,8 +1,10 @@
+/* exported skipIntervals_restoreSettings */
+
 var skipIntervalsModule =
 (function ($) {
     var enable = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #enable input[type="checkbox"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #enable input[type="checkbox"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
 
@@ -28,7 +30,7 @@ var skipIntervalsModule =
         restore: function (settings) {
             enable.init();
             var enabledSettingVal; // A variable to store the boolean value of the "enabled" setting
-            if (settings.skipIntervals.enabled == "enabled") {
+            if (settings.skipIntervals.enabled === "enabled") {
                 enabledSettingVal = true;
                 $('#skipIntervals .addEnableSettingState').removeClass('addEnableSettingState').addClass('enableSettings');
             } else {
@@ -43,8 +45,8 @@ var skipIntervalsModule =
     };
 
     var format = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #format input[name="format"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #format input[name="format"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -61,8 +63,8 @@ var skipIntervalsModule =
     };
 
     var quality = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #quality input[name="quality"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #quality input[name="quality"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -79,8 +81,8 @@ var skipIntervalsModule =
     };
 
     var increments = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #increments input[name="increments"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #increments input[name="increments"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -102,7 +104,7 @@ var skipIntervalsModule =
     };
 
     var incrementDelay = {
-        init: function (argument) {
+        init: function () {
             // Initiate Increment Delay Slider
             $('#skipIntervals #increment-delay .slider').slider({
                 min: 0.5,
@@ -140,7 +142,7 @@ var skipIntervalsModule =
     };
 
     var optimal = {
-        init: function (argument) {
+        init: function () {
             $('#load-optimal-settings').on('click', function () {
                 var $button = $(this);
                 optimal.loadOptimalSettings("tiny", 20, 75);
@@ -185,7 +187,7 @@ var skipIntervalsModule =
         restoreIncrements: increments.restore,
         restoreIncrementDelay: incrementDelay.restore,
         optimalInit: optimal.init
-    }
+    };
 })(window.jQuery);
 
 

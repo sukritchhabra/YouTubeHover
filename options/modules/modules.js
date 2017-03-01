@@ -1,7 +1,9 @@
+/* exported delayOnHover_restoreSettings */
+
 var delayOnHoverModule =
 (function ($) {
     var hoverDelay = {
-        init: function (argument) {
+        init: function () {
             // Initiate Slider
             $('#delayOnHover .slider').slider({
                 min: 0,
@@ -27,7 +29,7 @@ var delayOnHoverModule =
 
     return {
         restoreHoverDelay: hoverDelay.restore
-    }
+    };
 
 })(window.jQuery);
 
@@ -35,11 +37,13 @@ function delayOnHover_restoreSettings (settings) {
     delayOnHoverModule.restoreHoverDelay(settings);
 }
 
+/* exported player_restoreSettings */
+
 var playerModule =
 (function ($) {
     var volume = {
-        init: function (argument) {
-            $('body').on('click', '#volume .fa-volume-off', function(event) {
+        init: function () {
+            $('body').on('click', '#volume .fa-volume-off', function() {
                 volume.checkMute();
             });
 
@@ -62,7 +66,7 @@ var playerModule =
          * @param  {[DOM Element]} parentDiv [The parent div of the slider]
          */
         updateVolume: function (vol, parentDiv) {
-            if (vol == 0) {
+            if (vol === 0) {
                 $('#volume .fa-volume-off').addClass('muted');
             } else {
                 $('#volume .muted').removeClass('muted');
@@ -75,14 +79,15 @@ var playerModule =
          * either mute or unmute the video.
          */
         checkMute: function () {
+            var $muteButton;
             if ($('#volume .fa-volume-off').hasClass('muted')) {
-                var $muteButton = $('#volume .fa-volume-off');
+                $muteButton = $('#volume .fa-volume-off');
 
                 $('#volume .slider').slider('value', 100);
                 $('#volume .saveValue').val(100);
                 $muteButton.removeClass('muted');
             } else {
-                var $muteButton = $('#volume .fa-volume-off');
+                $muteButton = $('#volume .fa-volume-off');
                 $('#volume .slider').slider('value', 0);
                 $('#volume .saveValue').val(0);
                 $muteButton.addClass('muted');
@@ -93,15 +98,15 @@ var playerModule =
             volume.init();
             $('#volume .slider').slider('value', settings.player.volume);
             $('#volume .saveValue').val(settings.player.volume);
-            if (settings.player.volume == 0) {
+            if (parseInt(settings.player.volume) === 0) {
                 $('#volume .fa-volume-off').addClass('muted');
             }
         }
     };
 
     var clickAction = {
-        init: function (argument) {
-            $('body').on('change', '#player #clickAction input[name="clickAction"]', function(event) {
+        init: function () {
+            $('body').on('change', '#player #clickAction input[name="clickAction"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -120,7 +125,7 @@ var playerModule =
     return {
         restoreVolume: volume.restore,
         restoreClickAction: clickAction.restore
-    }
+    };
 })(window.jQuery);
 
 /**
@@ -132,11 +137,13 @@ function player_restoreSettings (settings) {
     playerModule.restoreClickAction(settings);
 }
 
+/* exported skipIntervals_restoreSettings */
+
 var skipIntervalsModule =
 (function ($) {
     var enable = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #enable input[type="checkbox"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #enable input[type="checkbox"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
 
@@ -162,7 +169,7 @@ var skipIntervalsModule =
         restore: function (settings) {
             enable.init();
             var enabledSettingVal; // A variable to store the boolean value of the "enabled" setting
-            if (settings.skipIntervals.enabled == "enabled") {
+            if (settings.skipIntervals.enabled === "enabled") {
                 enabledSettingVal = true;
                 $('#skipIntervals .addEnableSettingState').removeClass('addEnableSettingState').addClass('enableSettings');
             } else {
@@ -177,8 +184,8 @@ var skipIntervalsModule =
     };
 
     var format = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #format input[name="format"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #format input[name="format"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -195,8 +202,8 @@ var skipIntervalsModule =
     };
 
     var quality = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #quality input[name="quality"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #quality input[name="quality"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -213,8 +220,8 @@ var skipIntervalsModule =
     };
 
     var increments = {
-        init: function (argument) {
-            $('body').on('change', '#skipIntervals #increments input[name="increments"]', function(event) {
+        init: function () {
+            $('body').on('change', '#skipIntervals #increments input[name="increments"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -236,7 +243,7 @@ var skipIntervalsModule =
     };
 
     var incrementDelay = {
-        init: function (argument) {
+        init: function () {
             // Initiate Increment Delay Slider
             $('#skipIntervals #increment-delay .slider').slider({
                 min: 0.5,
@@ -274,7 +281,7 @@ var skipIntervalsModule =
     };
 
     var optimal = {
-        init: function (argument) {
+        init: function () {
             $('#load-optimal-settings').on('click', function () {
                 var $button = $(this);
                 optimal.loadOptimalSettings("tiny", 20, 75);
@@ -319,7 +326,7 @@ var skipIntervalsModule =
         restoreIncrements: increments.restore,
         restoreIncrementDelay: incrementDelay.restore,
         optimalInit: optimal.init
-    }
+    };
 })(window.jQuery);
 
 
@@ -336,11 +343,12 @@ function skipIntervals_restoreSettings (settings) {
     skipIntervalsModule.optimalInit();
 }
 
-var toolbarModule =
+/* exported toolbar_restoreSettings */
+
 (function ($) {
     var collapseAll = {
-        init: function (argument) {
-            $('body').on('click', '#toolbar .collapse-all', function(event) {
+        init: function () {
+            $('body').on('click', '#toolbar .collapse-all', function() {
                 collapseAll.collapse();
             });
         },
@@ -357,7 +365,7 @@ var toolbarModule =
                 } else {
                     $(chevronGlyph).removeClass('fa-chevron-up').addClass('fa-chevron-down');
                 }
-            })
+            });
         }
     };
     collapseAll.init();
@@ -367,4 +375,4 @@ var toolbarModule =
  * Default restore function.
  * @param  {[JSON]} settings [Settings object]
  */
-function toolbar_restoreSettings (settings) {}
+function toolbar_restoreSettings () {}

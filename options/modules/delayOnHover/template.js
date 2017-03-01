@@ -1,7 +1,9 @@
+/* exported delayOnHover_restoreSettings */
+
 var delayOnHoverModule =
 (function ($) {
     var hoverDelay = {
-        init: function (argument) {
+        init: function () {
             // Initiate Slider
             $('#delayOnHover .slider').slider({
                 min: 0,
@@ -27,7 +29,7 @@ var delayOnHoverModule =
 
     return {
         restoreHoverDelay: hoverDelay.restore
-    }
+    };
 
 })(window.jQuery);
 

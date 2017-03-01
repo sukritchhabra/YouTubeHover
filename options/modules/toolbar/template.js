@@ -1,8 +1,9 @@
-var toolbarModule =
+/* exported toolbar_restoreSettings */
+
 (function ($) {
     var collapseAll = {
-        init: function (argument) {
-            $('body').on('click', '#toolbar .collapse-all', function(event) {
+        init: function () {
+            $('body').on('click', '#toolbar .collapse-all', function() {
                 collapseAll.collapse();
             });
         },
@@ -19,7 +20,7 @@ var toolbarModule =
                 } else {
                     $(chevronGlyph).removeClass('fa-chevron-up').addClass('fa-chevron-down');
                 }
-            })
+            });
         }
     };
     collapseAll.init();
@@ -29,4 +30,4 @@ var toolbarModule =
  * Default restore function.
  * @param  {[JSON]} settings [Settings object]
  */
-function toolbar_restoreSettings (settings) {}
+function toolbar_restoreSettings () {}

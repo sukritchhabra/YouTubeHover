@@ -1,8 +1,10 @@
+/* exported player_restoreSettings */
+
 var playerModule =
 (function ($) {
     var volume = {
-        init: function (argument) {
-            $('body').on('click', '#volume .fa-volume-off', function(event) {
+        init: function () {
+            $('body').on('click', '#volume .fa-volume-off', function() {
                 volume.checkMute();
             });
 
@@ -25,7 +27,7 @@ var playerModule =
          * @param  {[DOM Element]} parentDiv [The parent div of the slider]
          */
         updateVolume: function (vol, parentDiv) {
-            if (vol == 0) {
+            if (vol === 0) {
                 $('#volume .fa-volume-off').addClass('muted');
             } else {
                 $('#volume .muted').removeClass('muted');
@@ -38,14 +40,15 @@ var playerModule =
          * either mute or unmute the video.
          */
         checkMute: function () {
+            var $muteButton;
             if ($('#volume .fa-volume-off').hasClass('muted')) {
-                var $muteButton = $('#volume .fa-volume-off');
+                $muteButton = $('#volume .fa-volume-off');
 
                 $('#volume .slider').slider('value', 100);
                 $('#volume .saveValue').val(100);
                 $muteButton.removeClass('muted');
             } else {
-                var $muteButton = $('#volume .fa-volume-off');
+                $muteButton = $('#volume .fa-volume-off');
                 $('#volume .slider').slider('value', 0);
                 $('#volume .saveValue').val(0);
                 $muteButton.addClass('muted');
@@ -56,15 +59,15 @@ var playerModule =
             volume.init();
             $('#volume .slider').slider('value', settings.player.volume);
             $('#volume .saveValue').val(settings.player.volume);
-            if (settings.player.volume == 0) {
+            if (parseInt(settings.player.volume) === 0) {
                 $('#volume .fa-volume-off').addClass('muted');
             }
         }
     };
 
     var clickAction = {
-        init: function (argument) {
-            $('body').on('change', '#player #clickAction input[name="clickAction"]', function(event) {
+        init: function () {
+            $('body').on('change', '#player #clickAction input[name="clickAction"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
                 subOption.find('.saveValue').val(inputField.val());
@@ -83,7 +86,7 @@ var playerModule =
     return {
         restoreVolume: volume.restore,
         restoreClickAction: clickAction.restore
-    }
+    };
 })(window.jQuery);
 
 /**
