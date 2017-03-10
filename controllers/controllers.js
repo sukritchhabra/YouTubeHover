@@ -51,7 +51,7 @@ var YouTubeHover_playerExists = false;
     }
 })(window.jQuery);
 /* jshint loopfunc: true */
-/* globals YouTubeHoverSettings, YouTubeHoverPlayer */
+/* globals YouTubeHoverSettings, YouTubeHoverPlayer, YouTubeHover_playerExists */
 
 (function ($) {
     var skipIntervals_timeoutID;
@@ -96,9 +96,10 @@ var YouTubeHover_playerExists = false;
              * let content.js know the video has ended. Using event as a way to pass messages between the two scripts.
              */
             setTimeout(function () {
-                $('body').trigger('finished-skipping'); // Trigger an event to have content.js call removeIframe()
+                if (YouTubeHover_playerExists) {
+                    $('body').trigger('finished-skipping'); // Trigger an event to have content.js call removeIframe()
+                }
             }, ((YouTubeHoverPlayer.getDuration())/increment)*1000);
-
         }
     });
 
@@ -111,10 +112,17 @@ var YouTubeHover_playerExists = false;
      */
     $('body').on('youtubeHover_iframeRemoved', function () {
         if (YouTubeHoverSettings.skipIntervals.enabled === "enabled") {
-
-            skipIntervals_clearTimeoutArr.forEach(function(timer) {
-                clearTimeout(timer);
-            });
+            clearTimeoutArray();
         }
     });
+
+    /**
+     * A function to clear the timeout ID's collected during skipping through the video.
+     */
+    function clearTimeoutArray () {
+        skipIntervals_clearTimeoutArr.forEach(function(timer) {
+            clearTimeout(timer);
+        });
+        skipIntervals_clearTimeoutArr = [];
+    }
 })(window.jQuery);
