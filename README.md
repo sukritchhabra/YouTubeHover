@@ -4,7 +4,7 @@ YouTubeHover is a chrome extension that allows a user to preview videos on YouTu
 
 ## Example
 
-<img src="https://cdn.rawgit.com/sukritchhabra/YouTubeHover/develop/imgs/example.gif" width="700" alt="">
+<img src="https://github.com/sukritchhabra/YouTubeHover/blob/develop/imgs/example.gif" width="700" alt="">
 
 ## Contributing to the Project
 - Report Issues/Bugs/Questions/Requests under Issues.
