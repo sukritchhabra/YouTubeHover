@@ -16,6 +16,20 @@
   #player #volume .fa-volume-off:hover {
     cursor: pointer; }
 
+#toolbar {
+  margin: 1.7em 5em 0;
+  padding: 0em 1.9em; }
+  #toolbar .tools-container {
+    height: 1em; }
+    #toolbar .tools-container .tool {
+      float: right;
+      margin-left: 0.5em;
+      font-size: 1em;
+      opacity: 0.2; }
+      #toolbar .tools-container .tool:hover {
+        cursor: pointer;
+        opacity: 0.5; }
+
 #skipIntervals .sub-option input {
   margin-left: 1em;
   vertical-align: sub; }
@@ -34,17 +48,3 @@
   cursor: pointer; }
   #skipIntervals #load-optimal-settings.notify-load {
     background-color: #279c37; }
-
-#toolbar {
-  margin: 1em 5em 0;
-  padding: 0em 1.9em; }
-  #toolbar .tools-container {
-    height: 1.5em; }
-    #toolbar .tools-container .tool {
-      float: right;
-      margin-left: 0.5em;
-      font-size: 1.5em;
-      opacity: 0.2; }
-      #toolbar .tools-container .tool:hover {
-        cursor: pointer;
-        opacity: 0.5; }

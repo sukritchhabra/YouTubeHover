@@ -28,6 +28,26 @@
         }
     }
 }
+#toolbar {
+    margin: 1.7em 5em 0;
+    padding: 0em 1.9em;;
+
+    .tools-container {
+        height: 1em;
+
+        .tool {
+            float: right;
+            margin-left: 0.5em;
+            font-size: 1em;
+            opacity: 0.2;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.5;
+            }
+        }
+    }
+}
 #skipIntervals {
     .sub-option input {
         margin-left: 1em;
@@ -49,26 +69,6 @@
 
         &.notify-load {
             background-color: #279c37;
-        }
-    }
-}
-#toolbar {
-    margin: 1em 5em 0;
-    padding: 0em 1.9em;;
-
-    .tools-container {
-        height: 1.5em;
-
-        .tool {
-            float: right;
-            margin-left: 0.5em;
-            font-size: 1.5em;
-            opacity: 0.2;
-
-            &:hover {
-                cursor: pointer;
-                opacity: 0.5;
-            }
         }
     }
 }
