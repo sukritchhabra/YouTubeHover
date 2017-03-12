@@ -8,7 +8,7 @@
     "author": "Sukrit Chhabra",
 
     "browser_action": {
-        "default_icon": "icon.png"
+        "default_icon": "imgs/touch/icon_96.png"
     },
 
     "options_ui": {

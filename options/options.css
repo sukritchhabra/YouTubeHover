@@ -132,7 +132,7 @@ nav {
       #content #example button#save:hover {
         background-color: #357ae8; }
       #content #example button#save.saved {
-        background-color: #00ab25; }
+        background-color: #27ae60; }
 
 .hint {
   clear: both;
