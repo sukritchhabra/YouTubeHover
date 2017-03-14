@@ -98,8 +98,9 @@ var YouTubeHover_playerExists = false;
             setTimeout(function () {
                 if (YouTubeHover_playerExists) {
                     $('body').trigger('finished-skipping'); // Trigger an event to have content.js call removeIframe()
+                    clearTimeoutArray();
                 }
-            }, ((YouTubeHoverPlayer.getDuration())/increment)*1000);
+            }, ( ( ( YouTubeHoverPlayer.getDuration() ) / increment ) * (increment * incrementFactor) ));
         }
     });
 
