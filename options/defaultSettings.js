@@ -14,5 +14,9 @@ var defaultSettings = {
         increment: "20",
         incrementFactor: "75",
         quality: "tiny"
+    },
+
+    toolbar: {
+        optionHoverTrigger: 0
     }
 };

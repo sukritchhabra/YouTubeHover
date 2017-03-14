@@ -10,11 +10,19 @@
             margin-left: 0.5em;
             font-size: 1em;
             opacity: 0.2;
+            cursor: pointer;
 
-            &:hover {
-                cursor: pointer;
+            &:not(.state):hover {
+                opacity: 0.5;
+            }
+
+            &.active {
                 opacity: 0.5;
             }
         }
+    }
+
+    .hideInput {
+        display: none !important;
     }
 }
