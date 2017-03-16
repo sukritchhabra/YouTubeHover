@@ -4,6 +4,7 @@
 (function ($) {
     var skipIntervals_timeoutID;
     var skipIntervals_clearTimeoutArr = [];
+    var skippingFinished_timeoutID;
 
     // When iframe is added.
     $('body').on('youtubeHover_playerReady', function () {
@@ -43,7 +44,7 @@
              * Instead of creating a remove function here, using an event on 'body' to
              * let content.js know the video has ended. Using event as a way to pass messages between the two scripts.
              */
-            setTimeout(function () {
+            skippingFinished_timeoutID = setTimeout(function () {
                 if (YouTubeHover_playerExists) {
                     $('body').trigger('finished-skipping'); // Trigger an event to have content.js call removeIframe()
                     clearTimeoutArray();
@@ -61,6 +62,7 @@
      */
     $('body').on('youtubeHover_iframeRemoved', function () {
         if (YouTubeHoverSettings.skipIntervals.enabled === "enabled") {
+            clearTimeout(skippingFinished_timeoutID);
             clearTimeoutArray();
         }
     });
