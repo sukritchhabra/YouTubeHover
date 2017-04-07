@@ -56,7 +56,7 @@ $(document).ready(function($) {
     });
 
     // Manually triggering change on .saveValues for effect to take pale onn options page for example preview.
-    $('body').on('change', '.option .sub-option input:not(.saveValue)', function (event) {
+    $('body').on('change', '.option .sub-option input[type="text"]:not(.saveValue)', function (event) {
         var subOption = $(this).closest('.sub-option');
         subOption.find('.saveValue').trigger('change');
     })

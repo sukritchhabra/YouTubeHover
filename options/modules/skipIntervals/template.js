@@ -9,12 +9,12 @@ var skipIntervalsModule =
                 var subOption = $(this).closest('.sub-option');
 
                 if (inputField.prop("checked")) {
-                    subOption.find('.saveValue').val("enabled");
+                    subOption.find('.saveValue').val("enabled").trigger('change');
 
                     // Enabling settings change if module is enabled.
                     subOption.siblings('.disableSettings').removeClass('disableSettings').addClass('enableSettings');
                 } else {
-                    subOption.find('.saveValue').val("disabled");
+                    subOption.find('.saveValue').val("disabled").trigger('change');
 
                     // Disabling settings change if module is disabled.
                     subOption.siblings('.enableSettings').removeClass('enableSettings').addClass('disableSettings');
@@ -49,7 +49,7 @@ var skipIntervalsModule =
             $('body').on('change', '#skipIntervals #format input[name="format"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
-                subOption.find('.saveValue').val(inputField.val());
+                subOption.find('.saveValue').val(inputField.val()).trigger('change');
             });
         },
 
@@ -67,7 +67,7 @@ var skipIntervalsModule =
             $('body').on('change', '#skipIntervals #quality input[name="quality"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
-                subOption.find('.saveValue').val(inputField.val());
+                subOption.find('.saveValue').val(inputField.val()).trigger('change');
             });
         },
 
@@ -85,7 +85,7 @@ var skipIntervalsModule =
             $('body').on('change', '#skipIntervals #increments input[name="increments"]', function() {
                 var inputField = $(this);
                 var subOption = $(this).closest('.sub-option');
-                subOption.find('.saveValue').val(inputField.val());
+                subOption.find('.saveValue').val(inputField.val()).trigger('change');
 
                 // Emulating change event on slider by changing values. Using.trigger("change") was not working.
                 var tempSliderValue = $("#skipIntervals #increment-delay .slider").slider("option", "value");
