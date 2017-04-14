@@ -9,6 +9,7 @@ chrome.storage.sync.get(defaultSettings, function (chromeSettings) {
 
     if (location.protocol === "chrome-extension:" && location.pathname === "/options/options.html") {
         Object.seal(YouTubeHoverSettings);
+        getChromeVersion(true, 57);
     } else {
         Object.freeze(YouTubeHoverSettings); // Making object immutable.
     }
@@ -172,3 +173,27 @@ $(document).ready(function($) {
         });
     }
 });
+
+/**
+ * Function that get the chrome version and logs it to the console.
+ * Default least value is 57.
+ * 
+ * @param {[Integer]} [customVersion]   [A custom version number that overides the least expected version]
+ * @param {[Boolean]} [shouldLog]       [A value that decides whether result is logged to console.]
+ * 
+ * @return {[Boolean]} Return true if the current version is greater than versionLeast. Else false.
+ */
+function getChromeVersion (shouldLog, customVersion) {
+    var versionLeast = 57; // Least expected version.
+    if (typeof customVersion == 'number') versionLeast = customVersion;
+
+    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/);
+
+    var version = raw[0].split('/')[1],
+        vMajor = parseInt(version.split('.')[0]);
+
+    var vColor = vMajor >= versionLeast ? 'green' : '#c75555';
+    if (shouldLog == true) console.log('%cChrome: %c' + version, 'color: black;', 'color: ' + vColor + ';');
+
+    return (vMajor >= versionLeast);
+}
