@@ -1,6 +1,9 @@
 $(document).ready(function($) {
-    loadOptions();
-    restoreOptions();
+    var loadOptionsPromises = loadOptions();
+    $.when.apply($, loadOptionsPromises).done(function () {
+        // Call restoreOptions() after all options have been loaded.
+        restoreOptions();
+    });
     loadExampleVideoMarkup();
 
     // Initializing question tooltips.
@@ -158,18 +161,23 @@ $(document).ready(function($) {
      * Loads the HTML for options defined in options/modules/
      * and adds it to the options page.
      * Also calls the defualt option function from the module/template.js
+     *
+     * @return {[Array]} promises [An array of promises returned from all AJAX calls.]
      */
     function loadOptions () {
+        var promises = [];
         $.each(moduleList, function(index, val) {
-            $.ajax({
+            var pr = $.ajax({
                 url: "modules/" + val + "/template.html",
                 type: "GET",
-                async: false,
+                async: true,
                 success: function (response) {
                     $('#insertSettings').append(response);
                 }
             });
+            promises.push(pr);
         });
+        return promises;
     }
 
     /**
