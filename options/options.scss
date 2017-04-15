@@ -228,24 +228,45 @@ nav {
     padding-top: 5em;
     text-align: center;
 
-    .hint-wrapper {
-        background-color: #484848;
+    .wrapper {
         width: 35%;
         margin: 0 auto;
         padding: 0.4em;
         border-radius: 15px;
         color: white;
+        display: none;
+        
+        &.hint-wrapper {
+            background-color: #484848;
 
-        .fa {
-            font-size: 1.3em;
-            color: #fffb00;
-            vertical-align: middle;
+            .fa {
+                font-size: 1.3em;
+                color: #fffb00;
+                vertical-align: middle;
+            }
+
+            .hint-text {
+                margin-left: 1em;
+                font-size: 1em;
+                font-weight: 300;
+            }
         }
 
-        .hint-text {
-            margin-left: 1em;
-            font-size: 1em;
-            font-weight: 300;
+        &.warning-wrapper {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #b74240;
+            
+            .fa {
+                font-size: 1.3em;
+                color: #fffb00;
+                vertical-align: middle;
+            }
+
+            .warning-text {
+                margin-left: 1em;
+                font-size: 1em;
+                font-weight: 400;
+            }
         }
     }
 }

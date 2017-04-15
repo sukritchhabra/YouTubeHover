@@ -6,6 +6,12 @@ $(document).ready(function($) {
     });
     loadExampleVideoMarkup();
 
+    if ( !getChromeVersion(true, 57) ) { // If Chrome version is below the expected version
+        $('.warning-wrapper').show();
+    } else {
+        $('.hint-wrapper').show();
+    }
+
     // Initializing question tooltips.
     $('.sub-option-tooltip.question').tooltip({
         template:  '<div class="tooltip" role="tooltip">\

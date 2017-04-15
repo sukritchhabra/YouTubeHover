@@ -9,7 +9,6 @@ chrome.storage.sync.get(defaultSettings, function (chromeSettings) {
 
     if (location.protocol === "chrome-extension:" && location.pathname === "/options/options.html") {
         Object.seal(YouTubeHoverSettings);
-        getChromeVersion(true, 57);
     } else {
         Object.freeze(YouTubeHoverSettings); // Making object immutable.
     }

@@ -139,18 +139,31 @@ nav {
   margin: 35em 0 0;
   padding-top: 5em;
   text-align: center; }
-  .hint .hint-wrapper {
-    background-color: #484848;
+  .hint .wrapper {
     width: 35%;
     margin: 0 auto;
     padding: 0.4em;
     border-radius: 15px;
-    color: white; }
-    .hint .hint-wrapper .fa {
-      font-size: 1.3em;
-      color: #fffb00;
-      vertical-align: middle; }
-    .hint .hint-wrapper .hint-text {
-      margin-left: 1em;
-      font-size: 1em;
-      font-weight: 300; }
+    color: white;
+    display: none; }
+    .hint .wrapper.hint-wrapper {
+      background-color: #484848; }
+      .hint .wrapper.hint-wrapper .fa {
+        font-size: 1.3em;
+        color: #fffb00;
+        vertical-align: middle; }
+      .hint .wrapper.hint-wrapper .hint-text {
+        margin-left: 1em;
+        font-size: 1em;
+        font-weight: 300; }
+    .hint .wrapper.warning-wrapper {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #b74240; }
+      .hint .wrapper.warning-wrapper .fa {
+        font-size: 1.3em;
+        color: #fffb00;
+        vertical-align: middle; }
+      .hint .wrapper.warning-wrapper .warning-text {
+        margin-left: 1em;
+        font-size: 1em;
+        font-weight: 400; }
