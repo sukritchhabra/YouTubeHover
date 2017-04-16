@@ -3,6 +3,7 @@ $(document).ready(function($) {
     $.when.apply($, loadOptionsPromises).done(function () {
         // Call restoreOptions() after all options have been loaded.
         restoreOptions();
+        createTooltips();
     });
     loadExampleVideoMarkup();
 
@@ -12,29 +13,37 @@ $(document).ready(function($) {
         $('.hint-wrapper').show();
     }
 
-    // Initializing question tooltips.
-    $('.sub-option-tooltip.question').tooltip({
-        template:  '<div class="tooltip" role="tooltip">\
-                        <div class="tooltip-arrow question"></div>\
-                        <div class="tooltip-inner question"></div>\
-                    </div>'
-    });
+    /**
+     * Since AJAX calls were made ASYNC, the tooltip binding were not taking place.
+     * Scoping them in a function and calling the function when all the options have been loaded.
+     *
+     * @return
+     */
+    function createTooltips() {
+        // Initializing question tooltips.
+        $('.sub-option-tooltip.question').tooltip({
+            template:  '<div class="tooltip" role="tooltip">\
+                            <div class="tooltip-arrow question"></div>\
+                            <div class="tooltip-inner question"></div>\
+                        </div>'
+        });
 
-    // Initializing question tooltips.
-    $('.sub-option-tooltip.rule').tooltip({
-        template:  '<div class="tooltip" role="tooltip">\
-                        <div class="tooltip-arrow rule"></div>\
-                        <div class="tooltip-inner rule"></div>\
-                    </div>'
-    });
+        // Initializing question tooltips.
+        $('.sub-option-tooltip.rule').tooltip({
+            template:  '<div class="tooltip" role="tooltip">\
+                            <div class="tooltip-arrow rule"></div>\
+                            <div class="tooltip-inner rule"></div>\
+                        </div>'
+        });
 
-    // Initializing connection tooltips.
-    $('.sub-option-tooltip.connection').tooltip({
-        template:  '<div class="tooltip" role="tooltip">\
-                        <div class="tooltip-arrow connection"></div>\
-                        <div class="tooltip-inner connection"></div>\
-                    </div>'
-    });
+        // Initializing connection tooltips.
+        $('.sub-option-tooltip.connection').tooltip({
+            template:  '<div class="tooltip" role="tooltip">\
+                            <div class="tooltip-arrow connection"></div>\
+                            <div class="tooltip-inner connection"></div>\
+                        </div>'
+        });
+    }
 
     // Detecting click on the save button
     $('body').on('click', '#save', function(event) {
