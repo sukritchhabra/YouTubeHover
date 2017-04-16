@@ -10,8 +10,8 @@ chrome.storage.sync.get(defaultSettings, function (chromeSettings) {
     if (location.protocol === "chrome-extension:" && location.pathname === "/options/options.html") {
         Object.seal(YouTubeHoverSettings);
     } else {
-        checkChromeAndNotify();
         Object.freeze(YouTubeHoverSettings); // Making object immutable.
+        if ( parseInt(YouTubeHoverSettings.toolbar.notifications) ) checkChromeAndNotify();
     }
 });
 
@@ -177,10 +177,10 @@ $(document).ready(function($) {
 /**
  * Function that get the chrome version and logs it to the console.
  * Default least value is 57.
- * 
+ *
  * @param {[Integer]} [customVersion]   [A custom version number that overides the least expected version]
  * @param {[Boolean]} [shouldLog]       [A value that decides whether result is logged to console.]
- * 
+ *
  * @return {[Boolean]} Return true if the current version is greater than versionLeast. Else false.
  */
 function getChromeVersion (shouldLog, customVersion) {
