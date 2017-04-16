@@ -17,6 +17,7 @@ var defaultSettings = {
     },
 
     toolbar: {
+        notifications: 1,
         optionHoverTrigger: 0
     }
 };

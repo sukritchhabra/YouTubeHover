@@ -371,6 +371,30 @@ var toolbar = (function ($) {
     };
     collapseAll.init();
 
+    var notifications = {
+        init: function () {
+            $('body').on('click', '#toolbar .notifications-wrapper .state', function() {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    $(this).siblings('.saveValue').val(0).trigger('change');
+                } else {
+                    $(this).addClass('active');
+                    $(this).siblings('.saveValue').val(1).trigger('change');
+                }
+            });
+        },
+
+        restore: function (settings) {
+            notifications.init();
+            var savedVal = parseInt(settings.toolbar.notifications);
+
+            if (savedVal === 1) {
+                $("#toolbar .notifications-wrapper .state").addClass('active');
+            }
+            $('#toolbar .notifications-wrapper .saveValue').val(savedVal);
+        }
+    };
+
     var optionTrigger = {
         init: function () {
             $('body').on('click', '#toolbar .option-trigger', function() {
@@ -435,6 +459,7 @@ var toolbar = (function ($) {
     };
 
     return {
+        restoreNotifications: notifications.restore,
         restoreOptionTrigger: optionTrigger.restore
     };
 })(window.jQuery);
@@ -444,5 +469,6 @@ var toolbar = (function ($) {
  * @param  {[JSON]} settings [Settings object]
  */
 function toolbar_restoreSettings (settings) {
+    toolbar.restoreNotifications(settings);
     toolbar.restoreOptionTrigger(settings);
 }
