@@ -18,7 +18,8 @@
     },
 
     "permissions": [
-      "storage"
+      "storage",
+      "notifications"
     ],
 
     "background": {

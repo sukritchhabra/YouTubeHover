@@ -10,6 +10,7 @@ chrome.storage.sync.get(defaultSettings, function (chromeSettings) {
     if (location.protocol === "chrome-extension:" && location.pathname === "/options/options.html") {
         Object.seal(YouTubeHoverSettings);
     } else {
+        checkChromeAndNotify();
         Object.freeze(YouTubeHoverSettings); // Making object immutable.
     }
 });
@@ -195,4 +196,15 @@ function getChromeVersion (shouldLog, customVersion) {
     if (shouldLog == true) console.log('%cChrome: %c' + version, 'color: black;', 'color: ' + vColor + ';');
 
     return (vMajor >= versionLeast);
+}
+
+/**
+ * Function that checks the version of chrome and shows notification if chrome needs to be updated.
+ * @return
+ */
+function checkChromeAndNotify() {
+    if ( !getChromeVersion(false) ) {
+    chrome.runtime.sendMessage({chromeNeedsUpdate: true});
+}
+
 }
