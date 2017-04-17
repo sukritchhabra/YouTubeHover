@@ -43,7 +43,7 @@ $(document).ready(function($) {
             console.log('exited');
         }
     }, ".yt-shelf-grid-item, \
-        .expanded-shelf-content-item .yt-lockup-thumbnail, .expanded-shelf-content-item .thumb-wrapper, \
+        .yt-lockup-tile .yt-lockup-thumbnail, .expanded-shelf-content-item .thumb-wrapper, \
         .video-list-item"
     );
 
