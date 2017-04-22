@@ -8,7 +8,8 @@
     "author": "Sukrit Chhabra",
 
     "browser_action": {
-        "default_icon": "imgs/touch/icon_96.png"
+        "default_icon": "imgs/touch/icon_96.png",
+        "default_title": "YouTubeHover"
     },
 
     "options_ui": {
