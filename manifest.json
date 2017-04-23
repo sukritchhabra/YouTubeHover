@@ -24,7 +24,10 @@
     ],
 
     "background": {
-      "scripts": ["background.js"]
+      "scripts": [
+        "analytics.js",
+        "background.js"
+      ]
     },
 
     "content_scripts": [ {
