@@ -23,12 +23,12 @@ $(document).ready(function($) {
             var hoverState = true;
             var $videoThumb = $(this);
 
-            var linkSelector = 'a.yt-uix-sessionlink, a.yt-uix-sessionlink';
+            var linkSelector = 'a.yt-simple-endpoint, a.yt-uix-sessionlink, a.yt-uix-sessionlink';
             var link = $videoThumb.find(linkSelector)[0].href;
 
             var id = getVideoID(link);
 
-            var thumbnailSelector = '.yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
+            var thumbnailSelector = '.ytd-thumbnail img, .yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
             var thumbnail = $videoThumb.find(thumbnailSelector);
 
             timeoutID = setTimeout(function() {
@@ -38,13 +38,17 @@ $(document).ready(function($) {
         mouseleave: function () {
             clearTimeout(timeoutID);
 
-            var thumbnailSelector = '.yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
+            var thumbnailSelector = '.ytd-thumbnail img, .yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
             removeIFrame($(this), thumbnailSelector);
             console.log('exited');
         }
     }, ".yt-shelf-grid-item, \
         .yt-lockup-tile .yt-lockup-thumbnail, .expanded-shelf-content-item .thumb-wrapper, \
-        .video-list-item"
+        .video-list-item, \
+        ytd-thumbnail.ytd-grid-video-renderer, \
+        ytd-thumbnail.ytd-video-renderer, \
+        ytd-thumbnail.ytd-newspaper-mini-video-renderer, \
+        ytd-thumbnail.ytd-compact-video-renderer"
     );
 
     /**
@@ -57,7 +61,7 @@ $(document).ready(function($) {
     $('body').on('finished-skipping', function(event) {
         clearTimeout(timeoutID);
 
-        var thumbnailSelector = '.yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
+        var thumbnailSelector = '.ytd-thumbnail img, .yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
         removeIFrame($(this), thumbnailSelector);
     });
 
