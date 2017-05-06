@@ -10,7 +10,6 @@
     "extension",
     "youtube"
   ],
-  "license": "MIT",
   "private": true,
   "ignore": [
     "**/.*",
