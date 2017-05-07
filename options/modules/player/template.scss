@@ -12,9 +12,14 @@
 
             &.muted {
                 color: #bd0000;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
-            &:hover {
+            &:not(.muted):hover {
+                color: #a76868;
                 cursor: pointer;
             }
         }

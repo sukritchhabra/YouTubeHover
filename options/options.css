@@ -102,7 +102,8 @@ nav {
             background-color: #b33e3e; }
         #content #insertSettings .option .sub-option .slider {
           width: 30%;
-          cursor: pointer; }
+          cursor: pointer;
+          vertical-align: baseline; }
         #content #insertSettings .option .sub-option .ui-corner-all,
         #content #insertSettings .option .sub-option .ui-corner-all {
           border-radius: 0; }
