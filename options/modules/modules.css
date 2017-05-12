@@ -19,24 +19,6 @@
     color: #a76868;
     cursor: pointer; }
 
-#toolbar {
-  margin: 1.7em 5em 0;
-  padding: 0em 1.9em; }
-  #toolbar .tools-container {
-    height: 1em; }
-    #toolbar .tools-container .tool {
-      float: right;
-      margin-left: 0.5em;
-      font-size: 1em;
-      opacity: 0.2;
-      cursor: pointer; }
-      #toolbar .tools-container .tool:not(.state):hover {
-        opacity: 0.5; }
-      #toolbar .tools-container .tool.active {
-        opacity: 0.5; }
-  #toolbar .hideInput {
-    display: none !important; }
-
 #skipIntervals .sub-option input {
   margin-left: 1em;
   vertical-align: sub; }
@@ -55,3 +37,21 @@
   cursor: pointer; }
   #skipIntervals #load-optimal-settings.notify-load {
     background-color: #279c37; }
+
+#toolbar {
+  margin: 1.7em 5em 0;
+  padding: 0em 1.9em; }
+  #toolbar .tools-container {
+    height: 1em; }
+    #toolbar .tools-container .tool {
+      float: right;
+      margin-left: 0.5em;
+      font-size: 1em;
+      opacity: 0.2;
+      cursor: pointer; }
+      #toolbar .tools-container .tool:not(.state):hover {
+        opacity: 0.5; }
+      #toolbar .tools-container .tool.active {
+        opacity: 0.5; }
+  #toolbar .hideInput {
+    display: none !important; }
