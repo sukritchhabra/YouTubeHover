@@ -8,9 +8,10 @@
   vertical-align: sub; }
 
 #player #volume .fa-volume-off {
-  margin-left: 2.5em !important;
+  margin-left: 1.5em !important;
   color: #a5a5a5;
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  vertical-align: middle !important; }
   #player #volume .fa-volume-off.muted {
     color: #bd0000; }
     #player #volume .fa-volume-off.muted:hover {
