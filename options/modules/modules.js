@@ -371,9 +371,9 @@ var toolbar = (function ($) {
     };
     collapseAll.init();
 
-    var notifications = {
+    var states = {
         init: function () {
-            $('body').on('click', '#toolbar .notifications-wrapper .state', function() {
+            $('body').on('click', '#toolbar .tool-wrapper .state', function() {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
                     $(this).siblings('.saveValue').val(0).trigger('change');
@@ -385,28 +385,21 @@ var toolbar = (function ($) {
         },
 
         restore: function (settings) {
-            notifications.init();
-            var savedVal = parseInt(settings.toolbar.notifications);
+            states.init();
+            $.each(settings.toolbar, function(key, val) {
+                var savedVal = parseInt(val),
+                    toolSelector = '#toolbar .tool.state[data-prop-name="' + key + '"]';
 
-            if (savedVal === 1) {
-                $("#toolbar .notifications-wrapper .state").addClass('active');
-            }
-            $('#toolbar .notifications-wrapper .saveValue').val(savedVal);
+                if (savedVal === 1) {
+                    $(toolSelector).addClass('active');
+                }
+                $(toolSelector).closest('.tool-wrapper').find('.saveValue').val(savedVal);
+            });
         }
     };
 
     var optionTrigger = {
         init: function () {
-            $('body').on('click', '#toolbar .option-trigger', function() {
-                if ($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                    $(this).siblings('.saveValue').val(0).trigger('change');
-                } else {
-                    $(this).addClass('active');
-                    $(this).siblings('.saveValue').val(1).trigger('change');
-                }
-            });
-
             // Using hover to open options if hover trigger is enabled
             var inProgress = 0;
             var mouseenterInProgress = 0;
@@ -445,22 +438,12 @@ var toolbar = (function ($) {
                     }
                 }
             }, "section.option");
-        },
-
-        restore: function (settings) {
-            optionTrigger.init();
-            var savedVal = parseInt(settings.toolbar.optionHoverTrigger);
-
-            if (savedVal === 1) {
-                $("#toolbar .option-trigger").addClass('active');
-            }
-            $('#toolbar .option-trigger-wrapper .saveValue').val(savedVal);
         }
     };
+    optionTrigger.init();
 
     return {
-        restoreNotifications: notifications.restore,
-        restoreOptionTrigger: optionTrigger.restore
+        restoreStates: states.restore
     };
 })(window.jQuery);
 
@@ -469,6 +452,5 @@ var toolbar = (function ($) {
  * @param  {[JSON]} settings [Settings object]
  */
 function toolbar_restoreSettings (settings) {
-    toolbar.restoreNotifications(settings);
-    toolbar.restoreOptionTrigger(settings);
+    toolbar.restoreStates(settings);
 }
