@@ -31,8 +31,16 @@ $(document).ready(function($) {
             var thumbnailSelector = '.ytd-thumbnail img, .yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
             var thumbnail = $videoThumb.find(thumbnailSelector);
 
+            addIFrame($videoThumb, thumbnail, id);
+            console.log("called addIFrame");
             timeoutID = setTimeout(function() {
-                    addIFrame($videoThumb, thumbnail, id);
+                console.log('in setTimeout');
+                thumbnail.css('display', 'none');
+                console.log('hiding image');
+                $('#youtubeHover_frame').show();
+                console.log('showing frame');
+                $('body').trigger('timeoutfinished');
+                console.log('triggered timeoutfinished');
             }, YouTubeHoverSettings.delayOnHover.hoverDelay * 1000);
         },
         mouseleave: function () {
@@ -104,7 +112,7 @@ $(document).ready(function($) {
 
         iframeHTML = iframeHTML +
                      '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
-                     '?controls=0&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1" frameborder="0"' +
+                     '?controls=1&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1" frameborder="0"' +
                      'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
 

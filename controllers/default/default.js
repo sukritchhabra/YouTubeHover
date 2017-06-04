@@ -7,6 +7,7 @@ var YouTubeHover_playerExists = false;
 (function ($) {
     // When iframe is added.
     $('body').on('youtubeHover_iframeAdded', function () {
+        console.log('iframe added');
         // Setup YouTubeHoverPlayer
         YouTubeHoverPlayer = new YT.Player('youtubeHover_frame', {
             events: {
@@ -15,7 +16,13 @@ var YouTubeHover_playerExists = false;
             }
         });
 
+
         YouTubeHover_playerExists = true;
+    });
+
+    $('body').on('timeoutfinished', function () {
+        console.log('timeout occurred');
+        YouTubeHoverPlayer.playVideo();
     });
 
     // When iframe is removed.
@@ -34,7 +41,10 @@ var YouTubeHover_playerExists = false;
      * @param  {[Event]} event [An object containing event details.]
      */
     function YouTubeHover_onPlayerReady() {
+        console.log('player ready');
+        YouTubeHoverPlayer.pauseVideo();
         $('body').trigger('youtubeHover_playerReady');
+        console.log('triggered player ready');
 
         // Set volume of player.
         var playerVolume = YouTubeHoverSettings.player.volume;
