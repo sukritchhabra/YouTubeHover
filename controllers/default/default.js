@@ -16,13 +16,17 @@ var YouTubeHover_playerExists = false;
             }
         });
 
-
         YouTubeHover_playerExists = true;
     });
 
-    $('body').on('timeoutfinished', function () {
-        console.log('timeout occurred');
+    var delayFinished = false, playerReady = false;
+    $('body').on('youtubeHover_delayFinished', function () {
+        delayFinished = true;
+        console.log('delay finished');
+        console.log(YouTubeHoverPlayer.playVideo);
         YouTubeHoverPlayer.playVideo();
+        console.log('called play video');
+        $('body').trigger('youtubeHover_playedVideo');
     });
 
     // When iframe is removed.
@@ -41,10 +45,14 @@ var YouTubeHover_playerExists = false;
      * @param  {[Event]} event [An object containing event details.]
      */
     function YouTubeHover_onPlayerReady() {
+        playerReady = true;
         console.log('player ready');
-        YouTubeHoverPlayer.pauseVideo();
+        console.log('delayFinished: ' + delayFinished);
+        if (!delayFinished) {
+            console.log('~~~~~ Pausing Video ~~~~~');
+            YouTubeHoverPlayer.pauseVideo();
+        }
         $('body').trigger('youtubeHover_playerReady');
-        console.log('triggered player ready');
 
         // Set volume of player.
         var playerVolume = YouTubeHoverSettings.player.volume;

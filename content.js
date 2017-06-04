@@ -32,15 +32,10 @@ $(document).ready(function($) {
             var thumbnail = $videoThumb.find(thumbnailSelector);
 
             addIFrame($videoThumb, thumbnail, id);
-            console.log("called addIFrame");
             timeoutID = setTimeout(function() {
-                console.log('in setTimeout');
                 thumbnail.css('display', 'none');
-                console.log('hiding image');
                 $('#youtubeHover_frame').show();
-                console.log('showing frame');
-                $('body').trigger('timeoutfinished');
-                console.log('triggered timeoutfinished');
+                $('body').trigger('youtubeHover_delayFinished');
             }, YouTubeHoverSettings.delayOnHover.hoverDelay * 1000);
         },
         mouseleave: function () {
@@ -112,13 +107,13 @@ $(document).ready(function($) {
 
         iframeHTML = iframeHTML +
                      '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
-                     '?controls=1&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1" frameborder="0"' +
-                     'style="width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
+                     '?controls=0&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1" frameborder="0"' +
+                     'style="display: none; width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
 
         $img.parent().append(iframeHTML);
         checkParentCSS('add', $img);
-        $img.css('display', 'none');
+        // $img.css('display', 'none');
         $('body').trigger('youtubeHover_iframeAdded');
     }
 

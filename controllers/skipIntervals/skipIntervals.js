@@ -7,7 +7,7 @@
     var skippingFinished_timeoutID;
 
     // When iframe is added.
-    $('body').on('youtubeHover_playerReady', function () {
+    $('body').on('youtubeHover_playedVideo', function () {
         /**
          * Earlier the check was outside the event bindings. Moving this in because YouTubeHoverSettings
          * can change between the two different iframe additions (Only on the options page.)
