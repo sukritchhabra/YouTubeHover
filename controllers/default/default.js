@@ -7,7 +7,6 @@ var YouTubeHover_playerExists = false;
 (function ($) {
     // When iframe is added.
     $('body').on('youtubeHover_iframeAdded', function () {
-        console.log('iframe added');
         // Setup YouTubeHoverPlayer
         YouTubeHoverPlayer = new YT.Player('youtubeHover_frame', {
             events: {
@@ -22,10 +21,7 @@ var YouTubeHover_playerExists = false;
     var delayFinished = false, playerReady = false;
     $('body').on('youtubeHover_delayFinished', function () {
         delayFinished = true;
-        console.log('delay finished');
-        console.log(YouTubeHoverPlayer.playVideo);
         YouTubeHoverPlayer.playVideo();
-        console.log('called play video');
         $('body').trigger('youtubeHover_playedVideo');
     });
 
@@ -46,10 +42,7 @@ var YouTubeHover_playerExists = false;
      */
     function YouTubeHover_onPlayerReady() {
         playerReady = true;
-        console.log('player ready');
-        console.log('delayFinished: ' + delayFinished);
         if (!delayFinished) {
-            console.log('~~~~~ Pausing Video ~~~~~');
             YouTubeHoverPlayer.pauseVideo();
         }
         $('body').trigger('youtubeHover_playerReady');
