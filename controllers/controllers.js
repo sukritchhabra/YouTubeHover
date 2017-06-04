@@ -32,7 +32,8 @@ var YouTubeHover_playerExists = false;
             YouTubeHoverPlayer.destroy();
         }
 
-        YouTubeHover_playerExists = false;
+        YouTubeHover_playerExists = false,
+        delayFinished = false;
     });
 
 
