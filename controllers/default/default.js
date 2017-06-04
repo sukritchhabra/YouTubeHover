@@ -21,7 +21,7 @@ var YouTubeHover_playerExists = false;
     var delayFinished = false, playerReady = false;
     $('body').on('youtubeHover_delayFinished', function () {
         delayFinished = true;
-        YouTubeHoverPlayer.playVideo();
+        if (YouTubeHoverPlayer.playVideo) YouTubeHoverPlayer.playVideo();
         $('body').trigger('youtubeHover_playedVideo');
     });
 
