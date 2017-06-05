@@ -21,8 +21,10 @@ var YouTubeHover_playerExists = false;
     var delayFinished = false, playerReady = false;
     $('body').on('youtubeHover_delayFinished', function () {
         delayFinished = true;
-        if (YouTubeHoverPlayer.playVideo) YouTubeHoverPlayer.playVideo();
-        $('body').trigger('youtubeHover_playedVideo');
+        if (playerReady) {
+            YouTubeHoverPlayer.playVideo();
+            $('body').trigger('youtubeHover_playedVideo');
+        }
     });
 
     // When iframe is removed.
@@ -33,7 +35,7 @@ var YouTubeHover_playerExists = false;
         }
 
         YouTubeHover_playerExists = false;
-        delayFinished = false;
+        delayFinished = false; playerReady = false;
     });
 
 
@@ -45,6 +47,9 @@ var YouTubeHover_playerExists = false;
         playerReady = true;
         if (!delayFinished) {
             YouTubeHoverPlayer.pauseVideo();
+        } else {
+            YouTubeHoverPlayer.playVideo();
+            $('body').trigger('youtubeHover_playedVideo');
         }
         $('body').trigger('youtubeHover_playerReady');
 
