@@ -4,6 +4,7 @@ $(document).ready(function($) {
         // Call restoreOptions() after all options have been loaded.
         restoreOptions();
         createTooltips();
+        checkOrder();
     });
     loadExampleVideoMarkup();
 
@@ -193,6 +194,43 @@ $(document).ready(function($) {
             promises.push(pr);
         });
         return promises;
+    }
+
+    /**
+     * Checks the order of the options and sorts them if they differnt from the order of moduleList.
+     *
+     * Since the options are being loaded asynchronously, sometime, they do not load in the right order.
+     *
+     * Could use nested callback to load them one after the other, but that would be
+     * the same as making the load synchronous.
+     *
+     * Instead, I think its better to load all of them simultaneously and just reorder them once they've loaded.
+     */
+    function checkOrder() {
+        var optionOrder = $.map($('#content section'), function(item, index) {
+            return $(item).attr('id');
+        });
+
+        if (!arraysEqual(optionOrder, moduleList)){
+            moduleList.forEach(function (module) {
+                var $module = $('#content section#' + module);
+                $module.detach().appendTo('#insertSettings');
+            });
+        }
+    }
+
+    /**
+     * Compares two arrays to check if they are equal.
+     * @param  {[Array]} a1 [First array.]
+     * @param  {[Array]} a2 [Second array]
+     * @return {[Boolean]}  [Returns true if equal, else returns false]
+     */
+    function arraysEqual(a1, a2) {
+        if (a1.length !== a2.length) return false;
+        for (var i = 0; i < a1.length; i++) {
+            if (a1[i] !== a2[i]) return false;
+        }
+        return true;
     }
 
     /**
