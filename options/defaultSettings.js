@@ -11,9 +11,9 @@ var defaultSettings = {
     skipIntervals: {
         enabled: "enabled",
         format: "playing",
-        increment: "20",
+        increment: "10",
         incrementFactor: "75",
-        quality: "tiny"
+        quality: "default"
     },
 
     toolbar: {
