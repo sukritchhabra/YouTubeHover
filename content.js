@@ -31,6 +31,8 @@ $(document).ready(function($) {
             var thumbnailSelector = '.ytd-thumbnail img, .yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
             var thumbnail = $videoThumb.find(thumbnailSelector);
 
+            $(this).find('#mouseover-overlay, .mouseover-play').hide();
+
             addIFrame($videoThumb, thumbnail, id);
             timeoutID = setTimeout(function() {
                 thumbnail.css('display', 'none');
@@ -40,6 +42,7 @@ $(document).ready(function($) {
         },
         mouseleave: function () {
             clearTimeout(timeoutID);
+            $(this).find('#mouseover-overlay, .mouseover-play').show();
 
             var thumbnailSelector = '.ytd-thumbnail img, .yt-thumb.video-thumb img, .yt-uix-simple-thumb-wrap img';
             removeIFrame($(this), thumbnailSelector);
