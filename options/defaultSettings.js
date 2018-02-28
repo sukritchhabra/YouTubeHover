@@ -13,7 +13,7 @@ var defaultSettings = {
         format: "playing",
         increment: "10",
         incrementFactor: "75",
-        quality: "default"
+        quality: "small"
     },
 
     toolbar: {
