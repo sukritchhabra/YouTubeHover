@@ -107,10 +107,11 @@ $(document).ready(function($) {
             iframeHTML = '<div id="youtubeHover_frameOverlay" style="position:absolute; z-index: 999; width: ' + width + '; height: ' + height +';"></div>';
         }
 
+        var quality = YouTubeHoverSettings.skipIntervals.quality;
 
         iframeHTML = iframeHTML +
                      '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
-                     '?controls=0&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1" frameborder="0"' +
+                     '?controls=1&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1&vq=' + quality + '" frameborder="0"' +
                      'style="display: none; width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
 
