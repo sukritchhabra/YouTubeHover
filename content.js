@@ -111,7 +111,7 @@ $(document).ready(function($) {
 
         iframeHTML = iframeHTML +
                      '<iframe id="youtubeHover_frame" src="https://www.youtube.com/embed/' + vID +
-                     '?controls=1&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1&vq=' + quality + '" frameborder="0"' +
+                     '?controls=0&autoplay=1&showinfo=0&rel=0&start=0&enablejsapi=1&vq=' + quality + '" frameborder="0"' +
                      'style="display: none; width: ' + width + '; height: ' + height + '; position: relative; box-sizing: border-box;"' +
                      'data-id="' + vID + '"></iframe>';
 
